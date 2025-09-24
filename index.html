@@ -44,7 +44,7 @@
                 <a href="#about" class="hover:text-green-700">About</a>
                 <a href="#contact" class="hover:text-green-700">Contact</a>
             </nav>
-            <div class="hidden md:flex items-center gap-3">
+            <div class="md:flex items-center gap-3">
                 <button id="installBtnHeader"
                     class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
                     📱 Install App
@@ -103,7 +103,7 @@
                 </a>
                 <div class="flex gap-3 items-center justify-center">
                     <button id="installBtnMobile"
-                        class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">
+                        class="hidden bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">
                         📱 Install App
                     </button>
                     <a href="index.html#booking"
@@ -499,6 +499,11 @@
         }
         window.handleSubmit = handleSubmit;
 
+        // Register service worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+
         // PWA Install functionality
         let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
@@ -506,27 +511,31 @@
         const installBtnMobile = document.getElementById('installBtnMobile');
 
         window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA install prompt available');
             e.preventDefault();
             deferredPrompt = e;
-            installBtn.classList.remove('hidden');
-            installBtnHeader.classList.remove('hidden');
-            installBtnMobile.classList.remove('hidden');
+            installBtn?.classList.remove('hidden');
+            installBtnHeader?.classList.remove('hidden');
+            installBtnMobile?.classList.remove('hidden');
         });
 
         const handleInstall = async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
+                console.log('Install outcome:', outcome);
                 deferredPrompt = null;
-                installBtn.classList.add('hidden');
-                installBtnHeader.classList.add('hidden');
-                installBtnMobile.classList.add('hidden');
+                installBtn?.classList.add('hidden');
+                installBtnHeader?.classList.add('hidden');
+                installBtnMobile?.classList.add('hidden');
+            } else {
+                alert('Install not available. Try:\n1. Chrome: Menu > Install app\n2. Edge: Menu > Apps > Install this site as an app');
             }
         };
 
-        installBtn.addEventListener('click', handleInstall);
-        installBtnHeader.addEventListener('click', handleInstall);
-        installBtnMobile.addEventListener('click', handleInstall);
+        installBtn?.addEventListener('click', handleInstall);
+        installBtnHeader?.addEventListener('click', handleInstall);
+        installBtnMobile?.addEventListener('click', handleInstall);
 
     </script>
 </body>
