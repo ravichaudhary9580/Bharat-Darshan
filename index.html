@@ -44,9 +44,14 @@
                 <a href="#about" class="hover:text-green-700">About</a>
                 <a href="#contact" class="hover:text-green-700">Contact</a>
             </nav>
-            <a href="#booking"
-                class="md:inline-flex hidden bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
-                Now</a>
+            <div class="hidden md:flex items-center gap-3">
+                <button id="installBtnHeader" class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
+                    📱 Install App
+                </button>
+                <a href="#booking"
+                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
+                    Now</a>
+            </div>
             <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -96,6 +101,9 @@
                     </svg>
                     Contact
                 </a>
+                <button id="installBtnMobile" class="hidden bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">
+                    📱 Install App
+                </button>
                 <a href="index.html#booking"
                     class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
                     Now</a>
@@ -490,21 +498,31 @@
         // PWA Install functionality
         let deferredPrompt;
         const installBtn = document.getElementById('installBtn');
+        const installBtnHeader = document.getElementById('installBtnHeader');
+        const installBtnMobile = document.getElementById('installBtnMobile');
 
         window.addEventListener('beforeinstallprompt', (e) => {
             e.preventDefault();
             deferredPrompt = e;
             installBtn.classList.remove('hidden');
+            installBtnHeader.classList.remove('hidden');
+            installBtnMobile.classList.remove('hidden');
         });
 
-        installBtn.addEventListener('click', async () => {
+        const handleInstall = async () => {
             if (deferredPrompt) {
                 deferredPrompt.prompt();
                 const { outcome } = await deferredPrompt.userChoice;
                 deferredPrompt = null;
                 installBtn.classList.add('hidden');
+                installBtnHeader.classList.add('hidden');
+                installBtnMobile.classList.add('hidden');
             }
-        });
+        };
+
+        installBtn.addEventListener('click', handleInstall);
+        installBtnHeader.addEventListener('click', handleInstall);
+        installBtnMobile.addEventListener('click', handleInstall);
 
     </script>
 </body>
