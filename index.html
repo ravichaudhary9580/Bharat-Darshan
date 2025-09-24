@@ -45,11 +45,11 @@
                 <a href="#contact" class="hover:text-green-700">Contact</a>
             </nav>
             <div class="hidden md:flex items-center gap-3">
-                <button id="installBtnHeader" class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
+                <button id="installBtnHeader"
+                    class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
                     📱 Install App
                 </button>
-                <a href="#booking"
-                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
+                <a href="#booking" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
                     Now</a>
             </div>
             <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
@@ -101,12 +101,15 @@
                     </svg>
                     Contact
                 </a>
-                <button id="installBtnMobile" class="hidden bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">
-                    📱 Install App
-                </button>
-                <a href="index.html#booking"
-                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
-                    Now</a>
+                <div class="flex gap-3 items-center justify-center">
+                    <button id="installBtnMobile"
+                        class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">
+                        📱 Install App
+                    </button>
+                    <a href="index.html#booking"
+                        class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
+                        Now</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -258,7 +261,8 @@
                 </form>
 
                 <!-- Group Form -->
-                <form id="formGrp" class="bg-white rounded-2xl shadow p-6 space-y-4 border hidden" onsubmit="return handleSubmit(event, 'Group Booking')">
+                <form id="formGrp" class="bg-white rounded-2xl shadow p-6 space-y-4 border hidden"
+                    onsubmit="return handleSubmit(event, 'Group Booking')">
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Organization Name
                             <input required name="groupname" type="text"
@@ -385,8 +389,7 @@
                     <li>• 24×7 support during the trip</li>
                 </ul>
             </div>
-            <img class="rounded-2xl shadow object-cover w-full h-72 lg:h-full"
-                src="image/home/about.jpg"
+            <img class="rounded-2xl shadow object-cover w-full h-72 lg:h-full" src="image/home/about.jpg"
                 alt="About Bharat Darshan" />
         </div>
     </section>
@@ -476,7 +479,8 @@
             </div>
         </div>
         <div class="text-center mt-6">
-            <button id="installBtn" class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
+            <button id="installBtn"
+                class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
                 📱 Install App
             </button>
         </div>
