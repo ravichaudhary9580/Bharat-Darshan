@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/x-icon" href="image/home/logo.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#16a34a">
     <title>Bharat Darshan — Discover India, Your Way</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -465,6 +467,11 @@
                 </div>
             </div>
         </div>
+        <div class="text-center mt-6">
+            <button id="installBtn" class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
+                📱 Install App
+            </button>
+        </div>
     </footer>
 
     <script>
@@ -479,6 +486,25 @@
             return false;
         }
         window.handleSubmit = handleSubmit;
+
+        // PWA Install functionality
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                deferredPrompt = null;
+                installBtn.classList.add('hidden');
+            }
+        });
 
     </script>
 </body>
