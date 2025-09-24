@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/x-icon" href="image/home/logo.png">
     <title>Bharat Darshan — Discover India, Your Way</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="index.js"></script>
+    <script src="exploretrip.js"></script>
     <style>
         body {
             font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
@@ -24,6 +26,7 @@
 
 <body class="bg-white text-gray-800">
     <!-- Header -->
+
     <header class="bg-white/95 backdrop-blur sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 lg:px-6 py-3 flex items-center justify-between">
             <a href="#home" class="flex items-center gap-2">
@@ -125,7 +128,7 @@
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
                 <a href="#booking"><img
                         class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
-                        src="adventure.avif" alt="Adventure" /></a>
+                        src="image/home/adventure.jpg" alt="Adventure" /></a>
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Adventure</h3>
                     <p class="text-sm text-gray-600 mb-4">Trekking, river rafting, desert safaris & more.</p>
@@ -137,7 +140,7 @@
             <!-- Heritage -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
                 <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
-                    src="heritage.jpg" alt="Heritage" />
+                    src="image/home/heritage.jpg" alt="Heritage" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Heritage</h3>
                     <p class="text-sm text-gray-600 mb-4">Fortresses, palaces, UNESCO sites, museums.</p>
@@ -149,7 +152,7 @@
             <!-- Religious -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
                 <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
-                    src="religious.jpg" alt="Religious" />
+                    src="image/home/religious.jpg" alt="Religious" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Religious</h3>
                     <p class="text-sm text-gray-600 mb-4">Yatras, temple circuits, spiritual retreats.</p>
@@ -161,7 +164,7 @@
             <!-- Student -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
                 <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
-                    src="school.png" alt="Student Trip" />
+                    src="image/home/school.jpg" alt="Student Trip" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Student</h3>
                     <p class="text-sm text-gray-600 mb-4">Educational tours, camps, industrial visits.</p>
@@ -194,131 +197,106 @@
                 <!-- Individual Form -->
                 <form id="formInd" class="bg-white rounded-2xl shadow p-6 space-y-4 border"
                     onsubmit="return handleSubmit(event, 'Individual Booking')">
+
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Full Name
                             <input required name="name" type="text"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Your name" />
                         </label>
                         <label class="block text-sm">Phone
                             <input required name="phone" type="tel" pattern="[0-9]{10}"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="10-digit number" />
                         </label>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <label class="block text-sm">Email
-                            <input required name="email" type="email"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="you@example.com" />
-                        </label>
                         <label class="block text-sm">Trip Category
                             <select required name="category"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600">
-                                <option value="Adventure">Adventure</option>
-                                <option value="Heritage">Heritage</option>
-                                <option value="Religious">Religious</option>
-                                <option value="Student">Student</option>
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                id="tripcategory">
+                                <option value="">Loading...</option>
+                            </select>
+                        </label>
+                        <label class="block text-sm">Destination/Trip Title
+                            <select required name="triptitle"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                id="triptitle">
+                                <option value="">Select Category First</option>
                             </select>
                         </label>
                     </div>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <label class="block text-sm">Destination
-                            <input required name="destination" type="text"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="e.g., Manali" />
-                        </label>
-                        <label class="block text-sm">Start Date
-                            <input required name="start" type="date"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600" />
-                        </label>
+                    <div class="grid sm:grid-cols-2 gap-4">
+
                         <label class="block text-sm">Travellers
                             <input required name="travellers" type="number" min="1"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 value="1" />
                         </label>
+                        <label class="block text-sm">Notes
+                            <textarea name="notes" rows="1"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                placeholder="Any preferences or special requests"></textarea>
+                        </label>
                     </div>
-                    <label class="block text-sm">Notes
-                        <textarea name="notes" rows="3"
-                            class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                            placeholder="Any preferences or special requests"></textarea>
-                    </label>
-                    <div class="pt-2">
+
+                    <div class="pt-0 mt-0 text-center">
                         <button
                             class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">Submit
-                            Individual Booking</button>
+                            Booking</button>
                     </div>
                 </form>
 
                 <!-- Group Form -->
-                <form id="formGrp" class="bg-white rounded-2xl shadow p-6 space-y-4 border hidden"
-                    onsubmit="return handleSubmit(event, 'Group Booking')">
+                <form id="formGrp" class="bg-white rounded-2xl shadow p-6 space-y-4 border hidden" onsubmit="return handleSubmit(event, 'Group Booking')">
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <label class="block text-sm">Organisation / Students
-                            <input required name="org" type="text"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="Institution name" />
+                        <label class="block text-sm">Organization Name
+                            <input required name="groupname" type="text"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                placeholder="School/Company name" />
                         </label>
                         <label class="block text-sm">Contact Person
-                            <input required name="cperson" type="text"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="Full name" />
+                            <input required name="contactperson" type="text"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                placeholder="Contact person name" />
                         </label>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Phone
                             <input required name="phone" type="tel" pattern="[0-9]{10}"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="10-digit number" />
                         </label>
-                        <label class="block text-sm">Email
-                            <input required name="email" type="email"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="you@example.com" />
-                        </label>
-                    </div>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <label class="block text-sm">Trip Type
-                            <select required name="type"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600">
+                        <label class="block text-sm">Trip Category
+                            <select required name="category"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600">
                                 <option value="Adventure">Adventure</option>
                                 <option value="Heritage">Heritage</option>
                                 <option value="Religious">Religious</option>
                                 <option value="Student">Student</option>
                             </select>
-                        </label>
-                        <label class="block text-sm">Group Size
-                            <input required name="size" type="number" min="5"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="e.g., 30" />
-                        </label>
-                        <label class="block text-sm">Start Date
-                            <input required name="start" type="date"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600" />
-                        </label>
                     </div>
+
                     <div class="grid sm:grid-cols-2 gap-4">
-                        <label class="block text-sm">Duration (days)
-                            <input required name="duration" type="number" min="1"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600" />
+                        <label class="block text-sm">Group Size
+                            <input required name="travellers" type="number" min="10"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                placeholder="Minimum 10 people" />
                         </label>
-                        <label class="block text-sm">Destination
-                            <input required name="destination" type="text"
-                                class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                                placeholder="e.g., Jaipur circuit" />
+                        <label class="block text-sm">Special Requirements
+                            <textarea name="notes" rows="2"
+                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                placeholder="Accommodation preferences, dietary requirements, etc."></textarea>
                         </label>
                     </div>
-                    <label class="block text-sm">Requirements / Itinerary notes
-                        <textarea name="requirements" rows="3"
-                            class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
-                            placeholder="Hotel class, transport, meal plans, etc."></textarea>
-                    </label>
-                    <div class="pt-2">
+
+                    <div class="pt-0 mt-0 text-center">
                         <button
-                            class="px-6 py-3 rounded-xl bg-orange-500 text-white font-semibold hover:bg-orange-600">Submit
+                            class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">Submit
                             Group Booking</button>
                     </div>
                 </form>
+
             </div>
 
             <!-- Confirmation -->
@@ -398,7 +376,7 @@
                 </ul>
             </div>
             <img class="rounded-2xl shadow object-cover w-full h-72 lg:h-full"
-                src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop"
+                src="image/home/about.jpg"
                 alt="About Bharat Darshan" />
         </div>
     </section>
