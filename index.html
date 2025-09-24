@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
     <style>
         body {
             font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
@@ -50,26 +51,64 @@
         </div>
         <div id="mobileMenu" class="md:hidden hidden border-t">
             <nav class="px-4 py-3 grid gap-3">
-                <a href="#home" class="hover:text-green-700">Home</a>
-                <a href="#trips" class="hover:text-green-700">Trips</a>
-                <a href="#booking" class="hover:text-green-700">Bookings</a>
-                <a href="#about" class="hover:text-green-700">About</a>
-                <a href="#contact" class="hover:text-green-700">Contact</a>
+                <a href="index.html#home" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Home
+                </a>
+                <a href="exploretrip.html" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                    </svg>
+                    Trips
+                </a>
+                <a href="index.html#booking" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Bookings
+                </a>
+                <a href="index.html#about" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    About
+                </a>
+                <a href="index.html#contact" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Contact
+                </a>
+                <a href="index.html#booking"
+                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
+                    Now</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero -->
     <section id="home" class="relative h-[72vh] md:h-[82vh] flex items-center justify-center">
-        <img src="https://images.unsplash.com/photo-1561395833-2b15f6d8e4b6?q=80&w=1920&auto=format&fit=crop"
-            alt="India travel montage" class="absolute inset-0 w-full h-full object-cover" />
-        <div class="absolute inset-0 bg-black/40"></div>
+        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+            alt="Group of travelers walking along a mountain trail in India, surrounded by lush green hills and misty peaks. The atmosphere is adventurous and uplifting."
+            class="absolute inset-0 w-full h-full object-cover" />
         <div class="relative glass rounded-2xl p-6 md:p-10 text-white text-center max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Discover India, Your Way</h1>
             <p class="text-lg md:text-xl opacity-95 mb-6">Adventure • Heritage • Religious • Student Trips</p>
             <div class="flex flex-wrap items-center justify-center gap-3">
-                <a href="#trips"
-                    class="px-6 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:shadow-md">Explore
+                <a href="exploretrip.html"
+                    class="px-6 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:bg-gray-200">Explore
                     Trips</a>
                 <a href="#booking"
                     class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold shadow hover:bg-green-700">Start
@@ -84,35 +123,33 @@
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Adventure -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
-                <img class="h-44 w-full object-cover"
-                    src="https://images.unsplash.com/photo-1529078155058-5d716f45d604?q=80&w=800&auto=format&fit=crop"
-                    alt="Adventure" />
+                <a href="#booking"><img
+                        class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
+                        src="adventure.avif" alt="Adventure" /></a>
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Adventure</h3>
                     <p class="text-sm text-gray-600 mb-4">Trekking, river rafting, desert safaris & more.</p>
-                    <a href="#booking"
+                    <a href="exploretrip.html#adventure"
                         class="inline-block px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700">View
                         Packages</a>
                 </div>
             </article>
             <!-- Heritage -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
-                <img class="h-44 w-full object-cover"
-                    src="https://images.unsplash.com/photo-1524499982521-1ffd58dd89ea?q=80&w=800&auto=format&fit=crop"
-                    alt="Heritage" />
+                <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
+                    src="heritage.jpg" alt="Heritage" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Heritage</h3>
                     <p class="text-sm text-gray-600 mb-4">Fortresses, palaces, UNESCO sites, museums.</p>
-                    <a href="#booking"
+                    <a href="exploretrip.html#heritage"
                         class="inline-block px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700">View
                         Packages</a>
                 </div>
             </article>
             <!-- Religious -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
-                <img class="h-44 w-full object-cover"
-                    src="https://images.unsplash.com/photo-1523419409543-a8da8d04a891?q=80&w=800&auto=format&fit=crop"
-                    alt="Religious" />
+                <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
+                    src="religious.jpg" alt="Religious" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Religious</h3>
                     <p class="text-sm text-gray-600 mb-4">Yatras, temple circuits, spiritual retreats.</p>
@@ -123,9 +160,8 @@
             </article>
             <!-- Student -->
             <article class="bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border">
-                <img class="h-44 w-full object-cover"
-                    src="https://images.unsplash.com/photo-1460518451285-97b6aa326961?q=80&w=800&auto=format&fit=crop"
-                    alt="Student" />
+                <img class="h-44 w-full object-cover transition duration-300 ease-in-out hover:brightness-110"
+                    src="school.png" alt="Student Trip" />
                 <div class="p-5">
                     <h3 class="text-xl font-bold mb-1">Student</h3>
                     <p class="text-sm text-gray-600 mb-4">Educational tours, camps, industrial visits.</p>
@@ -297,14 +333,63 @@
         </div>
     </section>
 
+    <!-- Glimpses Slider -->
+    <section id="glimpses" class="max-w 7xl mx-auto px-4 lg:px-6 py-14">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">Glimpses of Our Earlier Tours</h2>
+        <div class="relative">
+            <button id="prevSlide"
+                class="absolute left-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 z-10 hover:bg-gray-100">
+                <svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
+            <div id="slider" class="overflow-hidden rounded-2xl">
+                <div id="slides" class="flex transition-transform duration-500 ease-in-out">
+                    <div class="min-w-full">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1200&auto=format&fit=crop"
+                            alt="Tour 1" class="w-full h-96 object-cover rounded-2xl shadow" />
+                        <p class="text-center mt-4 text-lg font-semibold">Himalayan Trekking Adventure</p>
+                    </div>
+                    <div class="min-w-full">
+                        <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Tour 2" class="w-full h-96 object-cover rounded-2xl shadow" />
+                        <p class="text-center mt-4 text-lg font-semibold">Heritage Walk in Jaipur</p>
+                    </div>
+                    <div class="min-w-full">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?q=80&w=1200&auto=format&fit=crop"
+                            alt="Tour 3" class="w-full h-96 object-cover rounded-2xl shadow" />
+                        <p class="text-center mt-4 text-lg font-semibold">Spiritual Retreat in Varanasi</p>
+                    </div>
+                    <div class="min-w-full">
+                        <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2?q=80&w=1200&auto=format&fit=crop"
+                            alt="Tour 4" class="w-full h-96 object-cover rounded-2xl shadow" />
+                        <p class="text-center mt-4 text-lg font-semibold">Student Camp in Rishikesh</p>
+                    </div>
+                </div>
+            </div>
+            <button id="nextSlide"
+                class="absolute right-0 top-1/2 -translate-y-1/2 bg-white rounded-full shadow p-2 z-10 hover:bg-gray-100">
+                <svg class="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+        <div class="flex justify-center gap-2 mt-6" id="dots">
+            <button class="w-3 h-3 rounded-full bg-green-600 opacity-80" aria-label="Slide 1"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-300 opacity-80" aria-label="Slide 2"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-300 opacity-80" aria-label="Slide 3"></button>
+            <button class="w-3 h-3 rounded-full bg-gray-300 opacity-80" aria-label="Slide 4"></button>
+        </div>
+    </section>
+
     <!-- About -->
-     
     <section id="about" class="max-w-7xl mx-auto px-4 lg:px-6 py-14">
         <div class="grid lg:grid-cols-2 gap-8 items-center">
             <div>
                 <h2 class="text-3xl md:text-4xl font-extrabold mb-4">About Bharat Darshan</h2>
                 <p class="text-gray-700 leading-relaxed">We curate safe, memorable, and culturally rich journeys across
-                    India. From Himalayan treks to heritage walks, sacred circuits to Student excursions, our expert team
+                    India. From Himalayan treks to heritage walks, sacred circuits to Student excursions, our expert
+                    team
                     designs itineraries tailored to your goals and budget.</p>
                 <ul class="mt-4 space-y-2 text-gray-700">
                     <li>• Licensed guides & vetted vendors</li>
@@ -375,29 +460,36 @@
             </div>
             <div>
                 <h5 class="font-semibold">Follow</h5>
-                <p class="text-gray-300 text-sm mt-2">Instagram • Facebook • X</p>
+                <div class="flex gap-4 mt-2">
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a> <a href="#" class="text-gray-300 hover:text-white">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Mobile menu toggle
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        menuBtn?.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-
-        // Booking toggle
-        const btnInd = document.getElementById('btnInd');
-        const btnGrp = document.getElementById('btnGrp');
-        const formInd = document.getElementById('formInd');
-        const formGrp = document.getElementById('formGrp');
-        function activate(tab) {
-            if (tab === 'ind') { btnInd.classList.add('bg-orange-500', 'text-white'); btnGrp.classList.remove('bg-orange-500', 'text-white'); formInd.classList.remove('hidden'); formGrp.classList.add('hidden'); }
-            else { btnGrp.classList.add('bg-orange-500', 'text-white'); btnInd.classList.remove('bg-orange-500', 'text-white'); formGrp.classList.remove('hidden'); formInd.classList.add('hidden'); }
-        }
-        btnInd?.addEventListener('click', () => activate('ind'));
-        btnGrp?.addEventListener('click', () => activate('grp'));
-
         // Simple submission handler
         const toast = document.getElementById('toast');
         function handleSubmit(e, label) {
@@ -409,6 +501,7 @@
             return false;
         }
         window.handleSubmit = handleSubmit;
+
     </script>
 </body>
 

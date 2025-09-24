@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Upcoming Trips — Bharat Darshan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="index.js"></script>
+    <script src="exploretrip.js"></script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+    <!-- Header -->
+    <header class="bg-white/95 backdrop-blur sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <span class="inline-block w-3 h-3 rounded-full bg-orange-500"></span>
+                <span class="inline-block w-3 h-3 rounded-full bg-white ring-2 ring-gray-300"></span>
+                <span class="inline-block w-3 h-3 rounded-full bg-green-600"></span>
+                <span class="ml-2 text-2xl font-extrabold text-gray-900">Bharat Darshan</span>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 font-medium">
+                <a href="index.html#home" class="hover:text-green-700">Home</a>
+                <a href="exploretrip.html" class="hover:text-green-700">Trips</a>
+                <a href="index.html#booking" class="hover:text-green-700">Bookings</a>
+                <a href="index.html#about" class="hover:text-green-700">About</a>
+                <a href="index.html#contact" class="hover:text-green-700">Contact</a>
+            </nav>
+            <a href="index.html#booking"
+                class="md:inline-flex hidden bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
+                Now</a>
+            <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden border-t">
+            <nav class="px-4 py-3 grid gap-3">
+                <a href="index.html#home" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    Home
+                </a>
+                <a href="exploretrip.html" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
+                    </svg>
+                    Trips
+                </a>
+                <a href="index.html#booking" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    Bookings
+                </a>
+                <a href="index.html#about" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    About
+                </a>
+                <a href="index.html#contact" class="hover:text-green-700 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                    Contact
+                </a>
+                <a href="index.html#booking"
+                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
+                    Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Upcoming Trips Section -->
+    <section class="max-w-7xl mx-auto px-4 lg:px-6 py-14">
+        <h2 class="text-3xl md:text-4xl font-extrabold text-center mb-10">Upcoming Trips</h2>
+
+        <!-- Adventure Trips -->
+        <section id="adventure" class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-green-700">Adventure Trips</h3>
+            </div>
+            <div class="relative">
+                <!-- Scroll Left Button -->
+                <button id="adventureScrollLeft"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Scroll Right Button -->
+                <button id="adventureScrollRight"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <div id="adventureScroll" class="flex overflow-x-auto gap-8 pb-4 hide-scrollbar">
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1200&auto=format&fit=crop"
+                            alt="Himalayan Trekking Adventure" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Himalayan Trekking Adventure</h4>
+                            <p class="text-sm text-gray-600 mb-2">Manali to Leh • Adventure</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 15–22 July 2024<br>Group Size: 20<br>Price:
+                                ₹18,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+                            alt="Desert Safari in Jaisalmer" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Desert Safari in Jaisalmer</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaisalmer • Adventure</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 10–13 August 2024<br>Group Size: 15<br>Price:
+                                ₹12,000/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=1200&auto=format&fit=crop"
+                            alt="Himalayan Trekking Adventure" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Himalayan Trekking Adventure</h4>
+                            <p class="text-sm text-gray-600 mb-2">Manali to Leh • Adventure</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 15–22 July 2024<br>Group Size: 20<br>Price:
+                                ₹18,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+                            alt="Desert Safari in Jaisalmer" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Desert Safari in Jaisalmer</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaisalmer • Adventure</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 10–13 August 2024<br>Group Size: 15<br>Price:
+                                ₹12,000/person</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Heritage Trips -->
+        <section id="heritage" class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-orange-700">Heritage Trips</h3>
+            </div>
+
+            <div class="relative">
+                <!-- Scroll Left Button -->
+                <button id="heritageScrollLeft"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Scroll Right Button -->
+                <button id="heritageScrollRight"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <div id="heritageScroll" class="flex overflow-x-auto gap-8 pb-4 hide-scrollbar scroll-smooth">
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover"
+                            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?q=80&w=1200&auto=format&fit=crop"
+                            alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Religious Trips -->
+        <section id="religious" class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-orange-400">Religious Trips</h3>
+            </div>
+            <div class="relative">
+                <!-- Scroll Left Button -->
+                <button id="religiousScrollLeft"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Scroll Right Button -->
+                <button id="religiousScrollRight"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div id="religiousScroll" class="flex overflow-x-auto gap-8 pb-4 hide-scrollbar scroll-smooth">
+
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Student Trips -->
+        <section id="student" class="mb-12">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="text-2xl font-bold text-blue-700">Student Trips</h3>
+            </div>
+            <div class="relative">
+                <!-- Scroll Left Button -->
+                <button id="studentScrollLeft"
+                    class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll left">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Scroll Right Button -->
+                <button id="studentScrollRight"
+                    class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/80 hover:bg-orange-100 border rounded-full p-2 shadow hidden md:block"
+                    aria-label="Scroll right">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-700" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+
+                <div id="studentScroll" class="flex overflow-x-auto gap-8 pb-4 hide-scrollbar scroll-smooth">
+
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+                    <article
+                        class="min-w-[320px] bg-white rounded-2xl shadow hover:shadow-lg overflow-hidden border flex flex-col">
+                        <img class="h-44 w-full object-cover" src="religious2.jpg" alt="Heritage Walk in Jaipur" />
+                        <div class="p-5 flex-1 flex flex-col">
+                            <h4 class="text-xl font-bold mb-1">Heritage Walk in Jaipur</h4>
+                            <p class="text-sm text-gray-600 mb-2">Jaipur • Heritage</p>
+                            <p class="text-sm text-gray-700 mb-4">Dates: 5–7 September 2024<br>Group Size: 25<br>Price:
+                                ₹8,500/person</p>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Footer -->
+        <footer class="bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 lg:px-6 py-8 grid md:grid-cols-3 gap-6">
+                <div>
+                    <h4 class="font-bold text-lg">Bharat Darshan</h4>
+                    <p class="text-gray-300 mt-2 text-sm">© 2025 Bharat Darshan. All rights reserved.</p>
+                </div>
+                <div>
+                    <h5 class="font-semibold">Quick Links</h5>
+                    <ul class="mt-2 space-y-1 text-gray-300 text-sm">
+                        <li><a href="exploretrip.html" class="hover:text-white">Trips</a></li>
+                        <li><a href="index.html#booking" class="hover:text-white">Bookings</a></li>
+                        <li><a href="index.html#about" class="hover:text-white">About</a></li>
+                        <li><a href="index.html#contact" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="font-semibold">Follow</h5>
+                    <p class="text-gray-300 text-sm mt-2">Instagram • Facebook • X</p>
+                </div>
+            </div>
+        </footer>
+</body>
+
+</html>
