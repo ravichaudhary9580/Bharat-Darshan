@@ -583,6 +583,15 @@
             installBtnHeader?.classList.remove('hidden');
             installBtnMobile?.classList.remove('hidden');
         });
+        
+        // Show install button after 2 seconds if beforeinstallprompt doesn't fire
+        setTimeout(() => {
+            if (!deferredPrompt) {
+                installBtn?.classList.remove('hidden');
+                installBtnHeader?.classList.remove('hidden');
+                installBtnMobile?.classList.remove('hidden');
+            }
+        }, 2000);
 
         const handleInstall = async () => {
             if (deferredPrompt) {
