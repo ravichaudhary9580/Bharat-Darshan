@@ -2,7 +2,7 @@
   "name": "Bharat Darshan",
   "short_name": "Bharat Darshan",
   "description": "Discover India's heritage with curated travel experiences",
-  "start_url": "https://ravichaudhary9580.github.io/Bharat-Darshan/",
+  "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",

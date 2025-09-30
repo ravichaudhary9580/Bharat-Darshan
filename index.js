@@ -1,11 +1,6 @@
-
-// Make sure DOM is fully loaded before running the script
 document.addEventListener('DOMContentLoaded', () => {
-
-    // Fetch all trips data
     let allTrips = [];
-    const baseUrl = "https://script.google.com/macros/s/AKfycbzvI4G5SZFbH6S2jIhJE-44mOpYC2NWTPahFb8ZBSOHAM2ACs60LmnpoN-FmHx_9x-6/exec";
-    const toast = document.getElementById('toast');
+    const baseUrl = "https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec";
     
     fetch(baseUrl)
         .then(res => res.json())
@@ -20,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const categorySelect = document.getElementById('tripcategory');
         const titleSelect = document.getElementById('triptitle');
         
-        // Get unique categories
         const categories = [...new Set(allTrips.map(trip => trip.category))];
         categorySelect.innerHTML = '<option value="">Select Category</option>';
         categories.forEach(cat => {
@@ -30,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
             categorySelect.appendChild(option);
         });
         
-        // Populate all titles initially
         titleSelect.innerHTML = '<option value="">Select Trip</option>';
         allTrips.forEach(trip => {
             const option = document.createElement('option');
@@ -56,7 +49,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
-    // Category change handler
     document.getElementById('tripcategory').addEventListener('change', (e) => {
         filterTitles(e.target.value);
     });
@@ -91,57 +83,37 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Booking toggle
-    const btnInd = document.getElementById('btnInd');
-    const btnGrp = document.getElementById('btnGrp');
-    const formInd = document.getElementById('formInd');
-    const formGrp = document.getElementById('formGrp');
-    function activate(tab) {
-        if (tab === 'ind') { btnInd.classList.add('bg-orange-500', 'text-white'); btnGrp.classList.remove('bg-orange-500', 'text-white'); formInd.classList.remove('hidden'); formGrp.classList.add('hidden'); }
-        else { btnGrp.classList.add('bg-orange-500', 'text-white'); btnInd.classList.remove('bg-orange-500', 'text-white'); formGrp.classList.remove('hidden'); formInd.classList.add('hidden'); }
+    function toggleBooking(isIndividual) {
+        const btnInd = document.getElementById('btnInd');
+        const btnGrp = document.getElementById('btnGrp');
+        const formInd = document.getElementById('formInd');
+        const formGrp = document.getElementById('formGrp');
+        
+        btnInd?.classList.toggle('bg-orange-500', isIndividual);
+        btnInd?.classList.toggle('text-white', isIndividual);
+        btnGrp?.classList.toggle('bg-orange-500', !isIndividual);
+        btnGrp?.classList.toggle('text-white', !isIndividual);
+        formInd?.classList.toggle('hidden', !isIndividual);
+        formGrp?.classList.toggle('hidden', isIndividual);
     }
-    btnInd?.addEventListener('click', () => activate('ind'));
-    btnGrp?.addEventListener('click', () => activate('grp'));
+    document.getElementById('btnInd')?.addEventListener('click', () => toggleBooking(true));
+    document.getElementById('btnGrp')?.addEventListener('click', () => toggleBooking(false));
 
-    // slider
     const slides = document.getElementById('slides');
     const dots = document.querySelectorAll('#dots button');
-    let current = 0;
+    let current = 0, slideInterval;
 
     function showSlide(idx) {
         current = idx;
         slides.style.transform = `translateX(-${idx * 100}%)`;
-        dots.forEach((dot, i) => {
-            dot.classList.toggle('bg-green-600', i === idx);
-            dot.classList.toggle('bg-gray-300', i !== idx);
-        });
+        dots.forEach((dot, i) => dot.className = i === idx ? 'w-3 h-3 rounded-full bg-green-600 opacity-80' : 'w-3 h-3 rounded-full bg-gray-300 opacity-80');
     }
 
-    document.getElementById('prevSlide').onclick = () => {
-        showSlide((current - 1 + dots.length) % dots.length);
-        resetAutoSlide(); // Reset timer when manually changed
-    };
-
-    document.getElementById('nextSlide').onclick = () => {
-        showSlide((current + 1) % dots.length);
-        resetAutoSlide(); // Reset timer when manually changed
-    };
-
-    dots.forEach((dot, i) => {
-        dot.onclick = () => {
-            showSlide(i);
-            resetAutoSlide(); // Reset timer when manually changed
-        }
-    });
-
-    // Auto slide functionality
-    let slideInterval;
-    const SLIDE_INTERVAL_TIME = 5000; // Change slide every 5 seconds
-
+    function nextSlide() { showSlide((current + 1) % dots.length); }
+    function prevSlide() { showSlide((current - 1 + dots.length) % dots.length); }
+    
     function startAutoSlide() {
-        slideInterval = setInterval(() => {
-            showSlide((current + 1) % dots.length);
-        }, SLIDE_INTERVAL_TIME);
+        slideInterval = setInterval(nextSlide, 5000);
     }
 
     function resetAutoSlide() {
@@ -149,28 +121,17 @@ document.addEventListener('DOMContentLoaded', () => {
         startAutoSlide();
     }
 
-    // Initialize slider
+    document.getElementById('prevSlide')?.addEventListener('click', () => { prevSlide(); resetAutoSlide(); });
+    document.getElementById('nextSlide')?.addEventListener('click', () => { nextSlide(); resetAutoSlide(); });
+    dots.forEach((dot, i) => dot.addEventListener('click', () => { showSlide(i); resetAutoSlide(); }));
+    
+    const slider = document.getElementById('slider');
+    slider?.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    slider?.addEventListener('mouseleave', startAutoSlide);
+
     showSlide(0);
     startAutoSlide();
 
-    // Pause auto-slide when user hovers over slider
-    document.getElementById('slider').addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-    });
-
-    // Resume auto-slide when user leaves slider
-    document.getElementById('slider').addEventListener('mouseleave', () => {
-        startAutoSlide();
-    });
-
-    // Mobile menu toggle
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-    menuBtn.addEventListener("click", function () {
-        mobileMenu.classList.toggle("hidden");
-    });
-
-    // Form submission handler
     function handleSubmit(e, label) {
         e.preventDefault();
 
@@ -183,8 +144,13 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(res => res.text())
         .then(res => {
-            document.getElementById('toast').classList.remove('hidden');
-            document.getElementById('toast').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (label === 'Contact Form') {
+                document.getElementById('contactToast').classList.remove('hidden');
+                document.getElementById('contactToast').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+                document.getElementById('toast').classList.remove('hidden');
+                document.getElementById('toast').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
             e.target.reset();
         })
         .catch(err => {
@@ -195,4 +161,3 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     window.handleSubmit = handleSubmit;
 });
-
