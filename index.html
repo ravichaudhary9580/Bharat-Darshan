@@ -49,10 +49,11 @@
                     class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
                     📱 Install App
                 </button>
-
-                <a id="bookNowBtn" href="#booking"
-                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
-                    Now</a>
+                
+                <a href="signin.html"
+                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
+                <a href="#booking"
+                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book Now</a>
             </div>
             <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -93,8 +94,8 @@
                     </svg>
                     Contact
                 </a>
-                <a href="index.html#booking" class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
-                    Now</a>
+                <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
+                <a href="#booking" class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book Now</a>
             </nav>
         </div>
     </header>
@@ -238,8 +239,8 @@
                     </div>
 
                     <div class="pt-0 mt-0 text-center">
-                        <button
-                            class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">Submit
+                        <button type="submit"
+                            class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 disabled:opacity-50">Submit
                             Booking</button>
                     </div>
                 </form>
@@ -292,8 +293,8 @@
                     </div>
 
                     <div class="pt-0 mt-0 text-center">
-                        <button
-                            class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700">Submit
+                        <button type="submit"
+                            class="px-6 py-3 rounded-xl bg-green-600 text-white font-semibold hover:bg-green-700 disabled:opacity-50">Submit
                             Group Booking</button>
                     </div>
                 </form>
@@ -465,7 +466,7 @@
                             class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
                             placeholder="Tell us how we can help"></textarea>
                     </label>
-                    <button class="px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black">Send
+                    <button type="submit" class="px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black disabled:opacity-50">Send
                         Message</button>
                     <!-- Contact Form Confirmation -->
                     <div id="contactToast"
