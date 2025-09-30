@@ -54,10 +54,18 @@
                     <a href="signin.html"
                         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
                 </div>
-                <div id="userInfo" class="hidden flex items-center gap-3">
-                    <span id="userName" class="font-medium"></span>
-                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow">Dashboard</a>
-                    <button onclick="signOut()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl shadow">Sign Out</button>
+                <div id="userInfo" class="hidden relative">
+                    <button id="userDropdown" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-xl">
+                        <span id="userName" class="font-medium"></span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
+                        <a href="dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">Dashboard</a>
+                        <a href="#booking" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Book Now</a>
+                        <button onclick="signOut()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg">Sign Out</button>
+                    </div>
                 </div>
                 <a href="#booking"
                     class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book Now</a>
@@ -612,6 +620,18 @@
             location.reload();
         }
         window.signOut = signOut;
+        
+        // Dropdown toggle
+        document.getElementById('userDropdown')?.addEventListener('click', () => {
+            document.getElementById('dropdownMenu')?.classList.toggle('hidden');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!document.getElementById('userInfo')?.contains(e.target)) {
+                document.getElementById('dropdownMenu')?.classList.add('hidden');
+            }
+        });
 
         // Mobile menu toggle
         document.getElementById('menuBtn')?.addEventListener('click', () => {

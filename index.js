@@ -144,6 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(e.target);
         formData.append("formType", label);
+        
+        // Add user info if signed in and booking
+        const userData = localStorage.getItem('bharatDarshanUser');
+        if (userData && (label === 'Individual Booking' || label === 'Group Booking')) {
+            const user = JSON.parse(userData);
+            formData.append("userPhone", user.phone);
+            formData.append("userName", user.name);
+        }
 
         fetch(baseUrl, {
             method: "POST",
@@ -151,6 +159,23 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(res => res.text())
         .then(res => {
+            // Save booking to user's local storage
+            if (userData && (label === 'Individual Booking' || label === 'Group Booking')) {
+                const bookingData = {
+                    id: Date.now(),
+                    type: label,
+                    category: formData.get('category'),
+                    title: formData.get('triptitle') || formData.get('groupname'),
+                    travellers: formData.get('travellers'),
+                    date: new Date().toLocaleDateString(),
+                    status: 'Pending'
+                };
+                
+                const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+                bookings.push(bookingData);
+                localStorage.setItem('userBookings', JSON.stringify(bookings));
+            }
+            
             setTimeout(() => {
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;

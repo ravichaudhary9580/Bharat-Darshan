@@ -27,12 +27,18 @@
             </a>
             
             <div class="flex items-center gap-4">
-                <a href="index.html" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700">
-                    Back to Home
-                </a>
-                <button onclick="signOut()" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
-                    Sign Out
-                </button>
+                <div class="relative">
+                    <button id="dashboardDropdown" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-lg">
+                        <span>Menu</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="dashboardMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
+                        <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">Back to Home</a>
+                        <button onclick="signOut()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg">Sign Out</button>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -68,9 +74,8 @@
                 </div>
                 <h3 class="text-lg font-semibold mb-2">My Bookings</h3>
                 <p class="text-gray-600 text-sm mb-4">View your trip history</p>
-                <button class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">
-                    View Bookings
-                </button>
+                <p id="bookingCount" class="text-2xl font-bold text-blue-600 mb-2">0</p>
+                <p class="text-sm text-gray-500">Total Bookings</p>
             </div>
 
             <div class="bg-white rounded-2xl shadow p-6 text-center">
@@ -115,20 +120,13 @@
             </div>
         </div>
 
-        <!-- Recent Activity -->
+        <!-- My Bookings -->
         <div class="bg-white rounded-2xl shadow p-6">
-            <h2 class="text-xl font-bold mb-4">Recent Activity</h2>
-            <div class="space-y-4">
-                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
-                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                        <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <p class="font-medium">Account Created</p>
-                        <p class="text-sm text-gray-600" id="accountCreated">Welcome to Bharat Darshan!</p>
-                    </div>
+            <h2 class="text-xl font-bold mb-4">My Bookings</h2>
+            <div id="bookingsList" class="space-y-4">
+                <div class="text-center py-8 text-gray-500">
+                    <p>No bookings yet</p>
+                    <a href="index.html#booking" class="text-green-600 hover:text-green-700 mt-2 inline-block">Make your first booking</a>
                 </div>
             </div>
         </div>
@@ -155,13 +153,74 @@
             document.getElementById('profileName').textContent = userData.name;
             document.getElementById('profileEmail').textContent = userData.phone;
             document.getElementById('memberSince').textContent = signInDate.toLocaleDateString();
-            document.getElementById('accountCreated').textContent = `Signed in on ${signInDate.toLocaleDateString()}`;
+            
+            // Load bookings
+            loadBookings();
+        }
+        
+        function loadBookings() {
+            const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
+            
+            // Update status based on time
+            const updatedBookings = bookings.map(booking => {
+                const bookingTime = new Date(booking.id);
+                const now = new Date();
+                const hoursDiff = (now - bookingTime) / (1000 * 60 * 60);
+                
+                if (hoursDiff > 24) {
+                    booking.status = 'Confirmed';
+                } else if (hoursDiff > 1) {
+                    booking.status = 'Processing';
+                }
+                return booking;
+            });
+            
+            localStorage.setItem('userBookings', JSON.stringify(updatedBookings));
+            document.getElementById('bookingCount').textContent = updatedBookings.length;
+            
+            const bookingsList = document.getElementById('bookingsList');
+            if (updatedBookings.length === 0) {
+                bookingsList.innerHTML = '<div class="text-center py-8 text-gray-500"><p>No bookings yet</p><a href="index.html#booking" class="text-green-600 hover:text-green-700 mt-2 inline-block">Make your first booking</a></div>';
+                return;
+            }
+            
+            bookingsList.innerHTML = updatedBookings.map(booking => {
+                const statusColor = booking.status === 'Confirmed' ? 'bg-green-100 text-green-800' : 
+                                   booking.status === 'Processing' ? 'bg-blue-100 text-blue-800' : 
+                                   'bg-yellow-100 text-yellow-800';
+                
+                return `
+                <div class="flex items-center gap-4 p-4 bg-gray-50 rounded-lg">
+                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                        <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-medium">${booking.title || booking.category}</p>
+                        <p class="text-sm text-gray-600">${booking.type} • ${booking.travellers} travelers • ${booking.date}</p>
+                    </div>
+                    <span class="px-2 py-1 ${statusColor} text-xs rounded">${booking.status}</span>
+                </div>`;
+            }).join('');
         }
         
         function signOut() {
             localStorage.removeItem('bharatDarshanUser');
             window.location.href = 'signin.html';
         }
+        
+        // Dashboard dropdown toggle
+        document.getElementById('dashboardDropdown')?.addEventListener('click', () => {
+            document.getElementById('dashboardMenu')?.classList.toggle('hidden');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#dashboardDropdown')) {
+                document.getElementById('dashboardMenu')?.classList.add('hidden');
+            }
+        });
     </script>
 </body>
 </html>
