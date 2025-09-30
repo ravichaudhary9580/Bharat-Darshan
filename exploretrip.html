@@ -114,7 +114,7 @@
                     </svg>
                     Contact
                 </a>
-                <div id="authButtonsMobile">
+                <div id="authButtonsMobile" class="flex justify-center">
                     <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
                 </div>
                 <div id="userInfoMobile" class="hidden space-y-2">
@@ -264,6 +264,33 @@
             if (!e.target.closest('#userDropdown')) {
                 document.getElementById('dropdownMenu')?.classList.add('hidden');
             }
+        });
+        
+        // Hide mobile menu on scroll
+        window.addEventListener('scroll', () => {
+            document.getElementById('mobileMenu')?.classList.add('hidden');
+        });
+        
+        // Mobile menu toggle
+        document.getElementById('menuBtn')?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            document.getElementById('mobileMenu')?.classList.toggle('hidden');
+        });
+        
+        // Hide mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.getElementById('menuBtn');
+            if (!menuBtn?.contains(e.target) && !mobileMenu?.contains(e.target)) {
+                mobileMenu?.classList.add('hidden');
+            }
+        });
+        
+        // Hide mobile menu when clicking on nav links
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu')?.classList.add('hidden');
+            });
         });
     </script>
 </body>

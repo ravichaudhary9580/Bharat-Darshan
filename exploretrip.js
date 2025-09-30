@@ -7,10 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById(`${section}ScrollRight`)?.addEventListener('click', () => scroll?.scrollBy({ left: 350, behavior: "smooth" }));
     });
 
-    // Mobile menu toggle
-    document.getElementById("menuBtn")?.addEventListener("click", () => {
-        document.getElementById("mobileMenu")?.classList.toggle("hidden");
-    });
+
 });
 
 // Auto scroll for mobile view, stop on click/touch
