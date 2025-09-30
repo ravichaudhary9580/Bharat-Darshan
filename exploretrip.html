@@ -44,9 +44,27 @@
                 <a href="index.html#about" class="hover:text-green-700">About</a>
                 <a href="index.html#contact" class="hover:text-green-700">Contact</a>
             </nav>
-            <a href="index.html#booking"
-                class="md:inline-flex hidden bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
-                Now</a>
+            <div class="hidden md:flex items-center gap-3">
+                <div id="authButtons">
+                    <a href="signin.html"
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
+                </div>
+                <div id="userInfo" class="hidden relative">
+                    <button id="userDropdown" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-xl">
+                        <span id="userName" class="font-medium"></span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
+                        <a href="dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">Dashboard</a>
+                        <a href="index.html#booking" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Book Now</a>
+                        <button onclick="signOut()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg">Sign Out</button>
+                    </div>
+                </div>
+                <a href="index.html#booking"
+                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book Now</a>
+            </div>
             <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -96,9 +114,16 @@
                     </svg>
                     Contact
                 </a>
+                <div id="authButtonsMobile">
+                    <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
+                </div>
+                <div id="userInfoMobile" class="hidden space-y-2">
+                    <span id="userNameMobile" class="font-medium text-center block"></span>
+                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-xl shadow block">Dashboard</a>
+                    <button onclick="signOut()" class="bg-red-500 hover:bg-red-600 text-white text-center px-4 py-2 rounded-xl shadow w-full">Sign Out</button>
+                </div>
                 <a href="index.html#booking"
-                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
-                    Now</a>
+                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book Now</a>
             </nav>
         </div>
     </header>
@@ -209,6 +234,38 @@
                 </div>
             </div>
         </footer>
+    <script>
+        // Check if user is signed in
+        const userData = localStorage.getItem('bharatDarshanUser');
+        if (userData) {
+            const user = JSON.parse(userData);
+            document.getElementById('authButtons').classList.add('hidden');
+            document.getElementById('userInfo').classList.remove('hidden');
+            document.getElementById('userName').textContent = user.name;
+            
+            document.getElementById('authButtonsMobile').classList.add('hidden');
+            document.getElementById('userInfoMobile').classList.remove('hidden');
+            document.getElementById('userNameMobile').textContent = user.name;
+        }
+        
+        function signOut() {
+            localStorage.removeItem('bharatDarshanUser');
+            location.reload();
+        }
+        window.signOut = signOut;
+        
+        // Dropdown toggle
+        document.getElementById('userDropdown')?.addEventListener('click', () => {
+            document.getElementById('dropdownMenu')?.classList.toggle('hidden');
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#userDropdown')) {
+                document.getElementById('dropdownMenu')?.classList.add('hidden');
+            }
+        });
+    </script>
 </body>
 
 </html>
