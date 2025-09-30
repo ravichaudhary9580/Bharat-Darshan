@@ -66,6 +66,11 @@
     </div>
 
     <script>
+        // Check if already signed in
+        if (localStorage.getItem('bharatDarshanUser')) {
+            window.location.href = 'index.html';
+        }
+        
         document.getElementById('signinForm').addEventListener('submit', function(e) {
             e.preventDefault();
             

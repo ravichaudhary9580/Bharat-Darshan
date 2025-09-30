@@ -50,8 +50,15 @@
                     📱 Install App
                 </button>
                 
-                <a href="signin.html"
-                    class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
+                <div id="authButtons">
+                    <a href="signin.html"
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
+                </div>
+                <div id="userInfo" class="hidden flex items-center gap-3">
+                    <span id="userName" class="font-medium"></span>
+                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl shadow">Dashboard</a>
+                    <button onclick="signOut()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl shadow">Sign Out</button>
+                </div>
                 <a href="#booking"
                     class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book Now</a>
             </div>
@@ -94,7 +101,14 @@
                     </svg>
                     Contact
                 </a>
-                <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
+                <div id="authButtonsMobile">
+                    <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
+                </div>
+                <div id="userInfoMobile" class="hidden space-y-2">
+                    <span id="userNameMobile" class="font-medium text-center block"></span>
+                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-xl shadow block">Dashboard</a>
+                    <button onclick="signOut()" class="bg-red-500 hover:bg-red-600 text-white text-center px-4 py-2 rounded-xl shadow w-full">Sign Out</button>
+                </div>
                 <a href="#booking" class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book Now</a>
             </nav>
         </div>
@@ -579,6 +593,25 @@
         installBtn?.addEventListener('click', handleInstall);
         installBtnHeader?.addEventListener('click', handleInstall);
         installBtnMobile?.addEventListener('click', handleInstall);
+
+        // Check if user is signed in
+        const userData = localStorage.getItem('bharatDarshanUser');
+        if (userData) {
+            const user = JSON.parse(userData);
+            document.getElementById('authButtons').classList.add('hidden');
+            document.getElementById('userInfo').classList.remove('hidden');
+            document.getElementById('userName').textContent = user.name;
+            
+            document.getElementById('authButtonsMobile').classList.add('hidden');
+            document.getElementById('userInfoMobile').classList.remove('hidden');
+            document.getElementById('userNameMobile').textContent = user.name;
+        }
+        
+        function signOut() {
+            localStorage.removeItem('bharatDarshanUser');
+            location.reload();
+        }
+        window.signOut = signOut;
 
         // Mobile menu toggle
         document.getElementById('menuBtn')?.addEventListener('click', () => {
