@@ -43,6 +43,36 @@
       "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
     }
   ],
+  "file_handlers": [
+    {
+      "action": "./index.html",
+      "accept": {
+        "text/plain": [".txt"],
+        "application/json": [".json"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "./index.html",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "widgets": [
+    {
+      "name": "Quick Book",
+      "description": "Quick trip booking widget",
+      "tag": "quick-book",
+      "template": "quick-book",
+      "ms_ac_template": "./widget.html",
+      "data": "./widget-data.json",
+      "type": "application/json",
+      "screenshots": [{"src": "icon-192.png", "sizes": "192x192", "label": "Widget preview"}]
+    }
+  ],
   "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "prefer_related_applications": false,
   "related_applications": [

@@ -39,7 +39,50 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        return response || fetch(event.request);
+        if (response) {
+          return response;
+        }
+        return fetch(event.request).catch(() => {
+          if (event.request.destination === 'document') {
+            return caches.match('./index.html');
+          }
+        });
       })
   );
 });
+
+self.addEventListener('push', (event) => {
+  const options = {
+    body: event.data ? event.data.text() : 'New trip available!',
+    icon: './icon-192.png',
+    badge: './icon-192.png',
+    vibrate: [100, 50, 100],
+    data: { url: './index.html' }
+  };
+  event.waitUntil(
+    self.registration.showNotification('Bharat Darshan', options)
+  );
+});
+
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+  event.waitUntil(
+    clients.openWindow(event.notification.data.url || './index.html')
+  );
+});
+
+self.addEventListener('sync', (event) => {
+  if (event.tag === 'background-sync') {
+    event.waitUntil(doBackgroundSync());
+  }
+});
+
+function doBackgroundSync() {
+  return fetch('/api/sync')
+    .then(response => {
+      console.log('Background sync completed');
+    })
+    .catch(error => {
+      console.log('Background sync failed:', error);
+    });
+}
