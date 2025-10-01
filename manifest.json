@@ -2,20 +2,36 @@
   "name": "Bharat Darshan",
   "short_name": "Bharat Darshan",
   "description": "Discover India's heritage with curated travel experiences",
-  "start_url": "signin.html",
+  "start_url": "./signin.html",
+  "id": "com.bharatdarshan.app",
+  "scope": "./",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle"],
+  "screenshots": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
   "icons": [
     {
       "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
       "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
