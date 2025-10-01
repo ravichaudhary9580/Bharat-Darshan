@@ -167,8 +167,10 @@ function renderTrips(trips) {
     const container = document.getElementById('resultsGrid');
     const noResults = document.getElementById('noResults');
     const resultsCount = document.getElementById('resultsCount');
+    const loading = document.getElementById('loadingTrips');
     
     container.innerHTML = '';
+    loading?.classList.add('hidden');
     
     if (trips.length === 0) {
         noResults.classList.remove('hidden');

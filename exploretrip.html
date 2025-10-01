@@ -200,7 +200,10 @@
                 <span id="resultsCount" class="text-sm text-gray-600"></span>
             </div>
             <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <!-- Filtered trips will be displayed here -->
+                <div id="loadingTrips" class="col-span-full text-center py-12">
+                    <div class="animate-spin h-8 w-8 border-4 border-green-600 border-t-transparent rounded-full mx-auto mb-4"></div>
+                    <p class="text-gray-600">Loading trips...</p>
+                </div>
             </div>
             <div id="noResults" class="hidden text-center py-12">
                 <p class="text-gray-500 text-lg">No trips found matching your criteria.</p>
