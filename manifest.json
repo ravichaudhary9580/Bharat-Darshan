@@ -73,6 +73,12 @@
       "screenshots": [{"src": "icon-192.png", "sizes": "192x192", "label": "Widget preview"}]
     }
   ],
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "note_taking": {
+    "new_note_url": "./index.html?note=new"
+  },
   "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
   "prefer_related_applications": false,
   "related_applications": [
@@ -85,31 +91,31 @@
   "screenshots": [
     {
       "src": "1.png",
-      "sizes": "320x640",
+      "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "2.png",
-      "sizes": "320x640",
+      "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "3.png",
-      "sizes": "320x640",
+      "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "4.png",
-      "sizes": "320x640",
+      "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "narrow"
     },
     {
       "src": "5.png",
-      "sizes": "320x640",
+      "sizes": "1280x800",
       "type": "image/png",
       "form_factor": "narrow"
     },

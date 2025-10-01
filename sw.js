@@ -86,3 +86,20 @@ function doBackgroundSync() {
       console.log('Background sync failed:', error);
     });
 }
+
+self.addEventListener('periodicsync', (event) => {
+  if (event.tag === 'trips-sync') {
+    event.waitUntil(syncTripsData());
+  }
+});
+
+function syncTripsData() {
+  return fetch('https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec')
+    .then(response => response.json())
+    .then(data => {
+      return caches.open('trips-data').then(cache => {
+        cache.put('/trips-data', new Response(JSON.stringify(data)));
+      });
+    })
+    .catch(error => console.log('Periodic sync failed:', error));
+}
