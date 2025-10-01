@@ -5,7 +5,12 @@
   "start_url": "./signin.html",
   "id": "com.bharatdarshan.app",
   "scope": "./",
+  "scope_extensions": [
+    {"origin": "https://bharatdarshan.live"},
+    {"origin": "https://www.bharatdarshan.live"}
+  ],
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
@@ -15,7 +20,38 @@
     "travel",
     "lifestyle"
   ],
+  "shortcuts": [
+    {
+      "name": "Book Trip",
+      "short_name": "Book",
+      "description": "Book a new trip",
+      "url": "./index.html#booking",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Explore Trips",
+      "short_name": "Explore",
+      "description": "Browse available trips",
+      "url": "./exploretrip.html",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    },
+    {
+      "name": "Dashboard",
+      "short_name": "Dashboard",
+      "description": "View your bookings",
+      "url": "./dashboard.html",
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+    }
+  ],
   "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "prefer_related_applications": false,
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.bharatdarshan.app",
+      "id": "com.bharatdarshan.app"
+    }
+  ],
   "screenshots": [
     {
       "src": "1.png",
