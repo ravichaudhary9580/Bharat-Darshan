@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     title: formData.get('triptitle') || formData.get('groupname'),
                     travellers: formData.get('travellers'),
                     date: new Date().toLocaleDateString(),
-                    status: 'Pending'
+
                 };
                 
                 const bookings = JSON.parse(localStorage.getItem('userBookings') || '[]');
