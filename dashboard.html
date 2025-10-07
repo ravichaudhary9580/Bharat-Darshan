@@ -91,8 +91,19 @@
             </div>
         </div>
 
-        <!-- User Profile Card -->
+        <!-- My Bookings -->
         <div class="bg-white rounded-2xl shadow p-6 mb-8">
+            <h2 class="text-xl font-bold mb-4">My Bookings</h2>
+            <div id="bookingsList" class="space-y-4">
+                <div class="text-center py-8 text-gray-500">
+                    <p>No bookings yet</p>
+                    <a href="index.html#booking" class="text-green-600 hover:text-green-700 mt-2 inline-block">Make your first booking</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Profile Card -->
+        <div class="bg-white rounded-2xl shadow p-6">
             <h2 class="text-xl font-bold mb-4">Your Profile</h2>
             <div class="flex items-start gap-6">
                 <img id="profilePicture" class="w-20 h-20 rounded-full" alt="Profile">
@@ -115,17 +126,17 @@
                             <span class="inline-block mt-1 px-2 py-1 bg-green-100 text-green-800 text-sm rounded-full">Active</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- My Bookings -->
-        <div class="bg-white rounded-2xl shadow p-6">
-            <h2 class="text-xl font-bold mb-4">My Bookings</h2>
-            <div id="bookingsList" class="space-y-4">
-                <div class="text-center py-8 text-gray-500">
-                    <p>No bookings yet</p>
-                    <a href="index.html#booking" class="text-green-600 hover:text-green-700 mt-2 inline-block">Make your first booking</a>
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <button onclick="clearCache()" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm">
+                            Clear Cache
+                        </button>
+                        <button onclick="clearMyData()" class="px-4 py-2 bg-orange-600 text-white rounded-lg hover:bg-orange-700 text-sm">
+                            Clear My Data
+                        </button>
+                        <button onclick="deleteAccount()" class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 text-sm">
+                            Delete Account
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -215,6 +226,36 @@
         function signOut() {
             localStorage.removeItem('bharatDarshanUser');
             window.location.href = 'signin.html';
+        }
+        
+        function clearCache() {
+            if (confirm('Clear app cache? This will refresh the app data.')) {
+                if ('caches' in window) {
+                    caches.keys().then(names => {
+                        names.forEach(name => caches.delete(name));
+                    });
+                }
+                location.reload();
+            }
+        }
+        
+        function clearMyData() {
+            if (confirm('Clear all your local data? This will remove bookings and preferences.')) {
+                localStorage.removeItem('userBookings');
+                localStorage.removeItem('userPreferences');
+                alert('Local data cleared successfully!');
+                location.reload();
+            }
+        }
+        
+        function deleteAccount() {
+            if (confirm('Delete your account permanently? This action cannot be undone.')) {
+                if (confirm('Are you absolutely sure? All your data will be permanently deleted.')) {
+                    localStorage.clear();
+                    alert('Account deleted. You will be redirected to the home page.');
+                    window.location.href = 'index.html';
+                }
+            }
         }
         
         // Dashboard dropdown toggle
