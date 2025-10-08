@@ -6,49 +6,95 @@
   "id": "com.bharatdarshan.app",
   "scope": "https://ravichaudhary9580.github.io/Bharat-Darshan/",
   "display": "standalone",
+  "display_override": "window-controls-overlay",
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
   "lang": "en",
-  "categories": ["travel", "lifestyle"],
+  "categories": [
+    "travel",
+    "lifestyle"
+  ],
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7",
+  "related_applications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=com.bharatdarshan.app",
+      "id": "com.bharatdarshan.app"
+    }
+  ],
+  "prefer_related_applications": false,
   "launch_handler": {
     "client_mode": "focus-existing"
   },
+  "protocol_handlers": [
+    {
+      "protocol": "web+bharatdarshan",
+      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/?handler=%s"
+    }
+  ],
   "shortcuts": [
     {
       "name": "Book Trip",
       "short_name": "Book",
       "description": "Book a new trip",
       "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/index.html#booking",
-      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Explore Trips",
       "short_name": "Explore",
       "description": "Browse available trips",
       "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/exploretrip.html",
-      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     },
     {
       "name": "Dashboard",
       "short_name": "Dashboard",
       "description": "View your bookings",
       "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/dashboard.html",
-      "icons": [{"src": "icon-192.png", "sizes": "192x192"}]
+      "icons": [
+        {
+          "src": "icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
     }
   ],
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "manifest-icon-192.maskable.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "icon-512.png",
+      "src": "manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "manifest-icon-512.maskable.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "serviceworker": {

@@ -1,0 +1,70 @@
+{
+  "packageId": "io.github.ravichaudhary9580.twa",
+  "host": "ravichaudhary9580.github.io",
+  "name": "Bharat Darshan",
+  "launcherName": "Bharat",
+  "display": "standalone",
+  "themeColor": "#16A34A",
+  "themeColorDark": "#000000",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#FFFFFF",
+  "enableNotifications": true,
+  "startUrl": "/Bharat-Darshan/signin.html",
+  "iconUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/icon-512.png",
+  "maskableIconUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "C:\\RAVI\\Coding\\Bharat Darshan\\android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "2",
+  "appVersionCode": 2,
+  "shortcuts": [
+    {
+      "name": "Book Trip",
+      "shortName": "Book",
+      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/index.html#booking",
+      "chosenIconUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/icon-192.png"
+    },
+    {
+      "name": "Explore Trips",
+      "shortName": "Explore",
+      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/exploretrip.html",
+      "chosenIconUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/icon-192.png"
+    },
+    {
+      "name": "Dashboard",
+      "shortName": "Dashboard",
+      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/dashboard.html",
+      "chosenIconUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/icon-192.png"
+    }
+  ],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {
+    "locationDelegation": {
+      "enabled": true
+    }
+  },
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://ravichaudhary9580.github.io/Bharat-Darshan/",
+  "minSdkVersion": 21,
+  "orientation": "portrait-primary",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "focus-existing",
+  "displayOverride": [],
+  "appVersion": "2"
+}
