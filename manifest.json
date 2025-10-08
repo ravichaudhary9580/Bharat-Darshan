@@ -47,5 +47,77 @@
       "type": "image/png",
       "purpose": "any maskable"
     }
+  ],
+  "screenshots": [
+    {
+      "src": "1.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen with trip categories"
+    },
+    {
+      "src": "2.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Trip booking form"
+    },
+    {
+      "src": "3.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Explore trips with filters"
+    },
+    {
+      "src": "4.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "User dashboard and bookings"
+    },
+    {
+      "src": "5.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Sign in and sign up"
+    },
+    {
+      "src": "6.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Home screen with trip categories"
+    },
+    {
+      "src": "7.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Trip booking form"
+    },
+    {
+      "src": "8.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Explore trips with filters"
+    },
+    {
+      "src": "9.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "User dashboard and bookings"
+    },
+    {
+      "src": "10.png",
+      "sizes": "1080x2340",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Sign in and sign up"
+    }
   ]
 }
