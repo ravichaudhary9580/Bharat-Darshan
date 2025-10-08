@@ -1,16 +1,26 @@
 const BASE_URL = 'https://ravichaudhary9580.github.io/Bharat-Darshan/';
-const CACHE_NAME = 'bharat-darshan-v2';
+const CACHE_NAME = 'bharat-darshan-v3';
 const urlsToCache = [
   BASE_URL,
   BASE_URL + 'index.html',
   BASE_URL + 'exploretrip.html',
   BASE_URL + 'dashboard.html',
   BASE_URL + 'signin.html',
+  BASE_URL + 'privacy-policy.html',
+  BASE_URL + 'offline.html',
   BASE_URL + 'index.js',
   BASE_URL + 'exploretrip.js',
   BASE_URL + 'manifest.json',
   BASE_URL + 'icon-192.png',
-  BASE_URL + 'icon-512.png'
+  BASE_URL + 'icon-512.png',
+  BASE_URL + 'image/home/logo.png',
+  BASE_URL + 'image/home/adventure.jpg',
+  BASE_URL + 'image/home/heritage.jpg',
+  BASE_URL + 'image/home/religious.jpg',
+  BASE_URL + 'image/home/school.jpg',
+  BASE_URL + 'image/home/about.jpg',
+  'https://cdn.tailwindcss.com',
+  'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap'
 ];
 
 self.addEventListener('install', (event) => {
@@ -27,11 +37,42 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then(response => response || fetch(event.request).catch(() => {
-      if (event.request.destination === 'document') {
-        return caches.match(BASE_URL + 'index.html');
+    caches.match(event.request).then(response => {
+      if (response) {
+        return response;
       }
-    }))
+      
+      return fetch(event.request).then(fetchResponse => {
+        // Cache successful responses for future use
+        if (fetchResponse.status === 200) {
+          const responseClone = fetchResponse.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return fetchResponse;
+      }).catch(() => {
+        // Offline fallbacks
+        if (event.request.destination === 'document') {
+          // Try to serve the specific page from cache, fallback to offline page
+          return caches.match(event.request).then(cachedResponse => {
+            return cachedResponse || caches.match(BASE_URL + 'offline.html');
+          });
+        }
+        if (event.request.destination === 'image') {
+          return caches.match(BASE_URL + 'icon-192.png');
+        }
+        // For other requests, return a basic offline response
+        return new Response(JSON.stringify({
+          error: 'Offline',
+          message: 'This feature requires an internet connection'
+        }), {
+          status: 503,
+          statusText: 'Service Unavailable',
+          headers: { 'Content-Type': 'application/json' }
+        });
+      });
+    })
   );
 });
 

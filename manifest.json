@@ -11,6 +11,9 @@
   "theme_color": "#16a34a",
   "lang": "en",
   "categories": ["travel", "lifestyle"],
+  "launch_handler": {
+    "client_mode": "focus-existing"
+  },
   "shortcuts": [
     {
       "name": "Book Trip",
@@ -48,72 +51,76 @@
       "purpose": "any maskable"
     }
   ],
+  "serviceworker": {
+    "src": "sw.js",
+    "scope": "/"
+  },
   "screenshots": [
     {
-      "src": "1.png",
+      "src": "screenshot/1.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Home screen with trip categories"
     },
     {
-      "src": "2.png",
+      "src": "screenshot/2.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Trip booking form"
     },
     {
-      "src": "3.png",
+      "src": "screenshot/3.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Explore trips with filters"
     },
     {
-      "src": "4.png",
+      "src": "screenshot/4.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "User dashboard and bookings"
     },
     {
-      "src": "5.png",
+      "src": "screenshot/5.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Sign in and sign up"
     },
     {
-      "src": "6.png",
+      "src": "screenshot/6.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Home screen with trip categories"
     },
     {
-      "src": "7.png",
+      "src": "screenshot/7.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Trip booking form"
     },
     {
-      "src": "8.png",
+      "src": "screenshot/8.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Explore trips with filters"
     },
     {
-      "src": "9.png",
+      "src": "screenshot/9.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
       "label": "User dashboard and bookings"
     },
     {
-      "src": "10.png",
+      "src": "screenshot/10.png",
       "sizes": "1080x2340",
       "type": "image/png",
       "form_factor": "narrow",
