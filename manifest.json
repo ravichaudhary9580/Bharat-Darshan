@@ -3,7 +3,7 @@
   "short_name": "Bharat Darshan",
   "description": "Discover India's heritage with curated travel experiences",
   "start_url": "https://ravichaudhary9580.github.io/Bharat-Darshan/signin.html",
-  "id": "com.bharatdarshan.app",
+  "id": "com.bharatdarshan.travel",
   "scope": "https://ravichaudhary9580.github.io/Bharat-Darshan/",
   "display": "standalone",
   "display_override": "window-controls-overlay",
@@ -19,8 +19,8 @@
   "related_applications": [
     {
       "platform": "play",
-      "url": "https://play.google.com/store/apps/details?id=com.bharatdarshan.app",
-      "id": "com.bharatdarshan.app"
+      "url": "https://play.google.com/store/apps/details?id=com.bharatdarshan.travel",
+      "id": "com.bharatdarshan.travel"
     }
   ],
   "prefer_related_applications": false,
