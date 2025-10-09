@@ -4,14 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // PWA Install functionality
     let deferredPrompt;
-    const installBtnHero = document.getElementById('installBtnHero');
-    const installBtnHeader = document.getElementById('installBtnHeader');
+    const installBtn = document.getElementById('installBtn');
     
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtnHero?.classList.remove('hidden');
-        installBtnHeader?.classList.remove('hidden');
+        installBtn?.classList.remove('hidden');
     });
     
     function installApp() {
@@ -19,20 +17,17 @@ document.addEventListener('DOMContentLoaded', () => {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
-                    installBtnHero?.classList.add('hidden');
-                    installBtnHeader?.classList.add('hidden');
+                    installBtn?.classList.add('hidden');
                 }
                 deferredPrompt = null;
             });
         }
     }
     
-    installBtnHero?.addEventListener('click', installApp);
-    installBtnHeader?.addEventListener('click', installApp);
+    installBtn?.addEventListener('click', installApp);
     
     window.addEventListener('appinstalled', () => {
-        installBtnHero?.classList.add('hidden');
-        installBtnHeader?.classList.add('hidden');
+        installBtn?.classList.add('hidden');
     });
     
     fetch(baseUrl)

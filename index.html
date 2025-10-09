@@ -47,26 +47,32 @@
                     class="hidden px-4 py-2 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 text-sm">
                     📱 Install App
                 </button>
-                
+
                 <div id="authButtons">
                     <a href="signin.html"
                         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-xl shadow">Sign In</a>
                 </div>
                 <div id="userInfo" class="hidden relative">
-                    <button id="userDropdown" class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-xl">
+                    <button id="userDropdown"
+                        class="flex items-center gap-2 bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-xl">
                         <span id="userName" class="font-medium"></span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
                         </svg>
                     </button>
-                    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
-                        <a href="dashboard.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">Dashboard</a>
+                    <div id="dropdownMenu"
+                        class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border z-50">
+                        <a href="dashboard.html"
+                            class="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-t-lg">Dashboard</a>
                         <a href="#booking" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Book Now</a>
-                        <button onclick="signOut()" class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg">Sign Out</button>
+                        <button onclick="signOut()"
+                            class="w-full text-left px-4 py-2 text-red-600 hover:bg-gray-100 rounded-b-lg">Sign
+                            Out</button>
                     </div>
                 </div>
-                <a href="#booking"
-                    class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book Now</a>
+                <a href="#booking" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
+                    Now</a>
             </div>
             <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -76,46 +82,67 @@
             </button>
         </div>
         <div id="mobileMenu" class="md:hidden hidden border-t">
-           <nav class="px-4 py-3 grid gap-3">
+            <nav class="px-4 py-3 grid gap-3">
                 <a href="index.html#home" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
                     </svg>
                     Home
                 </a>
                 <a href="exploretrip.html" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064">
+                        </path>
                     </svg>
                     Trips
                 </a>
                 <a href="index.html#booking" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+                        </path>
                     </svg>
                     Bookings
                 </a>
                 <a href="index.html#about" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
                     About
                 </a>
                 <a href="index.html#contact" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
                     </svg>
                     Contact
                 </a>
                 <div id="authButtonsMobile" class="flex justify-center">
-                    <a href="signin.html" class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign In</a>
+                    <a href="signin.html"
+                        class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign
+                        In</a>
                 </div>
                 <div id="userInfoMobile" class="hidden space-y-2">
                     <span id="userNameMobile" class="font-medium text-center block"></span>
-                    <a href="dashboard.html" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-xl shadow block">Dashboard</a>
-                    <button onclick="signOut()" class="bg-red-500 hover:bg-red-600 text-white text-center px-4 py-2 rounded-xl shadow w-full">Sign Out</button>
+                    <a href="dashboard.html"
+                        class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-xl shadow block">Dashboard</a>
+                    <button onclick="signOut()"
+                        class="bg-red-500 hover:bg-red-600 text-white text-center px-4 py-2 rounded-xl shadow w-full">Sign
+                        Out</button>
                 </div>
-                <a href="#booking" class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book Now</a>
+                <a href="#booking"
+                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
+                    Now</a>
             </nav>
         </div>
     </header>
@@ -128,12 +155,14 @@
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Discover India, Your Way</h1>
             <p class="text-lg md:text-xl opacity-95 mb-6">Adventure • Heritage • Religious • Student Trips</p>
             <div class="text-center mt-6">
-            <button id="installBtn"
-                class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
-                📱 Install App
-            </button>
-        </div>
+
+
+            </div>
             <div class="flex flex-wrap items-center justify-center gap-3">
+                <button id="installBtn"
+                    class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
+                    📱 Install App
+                </button>
                 <a href="exploretrip.html"
                     class="px-6 py-3 rounded-xl bg-white text-gray-900 font-semibold shadow hover:bg-gray-200">Explore
                     Trips</a>
@@ -219,7 +248,7 @@
                 <!-- Individual Form -->
                 <form id="formInd" class="bg-white rounded-2xl shadow p-6 space-y-4 border"
                     onsubmit="return handleSubmit(event, 'Individual Booking')">
-                    
+
 
 
                     <div class="grid sm:grid-cols-2 gap-4">
@@ -274,9 +303,9 @@
                 <!-- Group Form -->
                 <form id="formGrp" class="bg-white rounded-2xl shadow p-6 space-y-4 border hidden"
                     onsubmit="return handleSubmit(event, 'Group Booking')">
-                    
 
-                    
+
+
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Organization Name
                             <input required name="groupname" type="text"
@@ -492,7 +521,8 @@
                             class="mt-1 w-full rounded-xl border-gray-300 focus:ring-green-600 focus:border-green-600"
                             placeholder="Tell us how we can help"></textarea>
                     </label>
-                    <button type="submit" class="px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black disabled:opacity-50">Send
+                    <button type="submit"
+                        class="px-6 py-3 rounded-xl bg-gray-900 text-white font-semibold hover:bg-black disabled:opacity-50">Send
                         Message</button>
                     <!-- Contact Form Confirmation -->
                     <div id="contactToast"
@@ -561,7 +591,7 @@
             </div>
         </div>
         <div class="text-center mt-6">
-            <button id="installBtn"
+            <button id="installBtnMobile"
                 class="hidden px-6 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors">
                 📱 Install App
             </button>
@@ -614,33 +644,33 @@
             document.getElementById('authButtons').classList.add('hidden');
             document.getElementById('userInfo').classList.remove('hidden');
             document.getElementById('userName').textContent = user.name;
-            
+
             document.getElementById('authButtonsMobile').classList.add('hidden');
             document.getElementById('userInfoMobile').classList.remove('hidden');
             document.getElementById('userNameMobile').textContent = user.name;
-            
+
             // Auto-fill booking forms
             const nameField = document.querySelector('input[name="name"]');
             const phoneFields = document.querySelectorAll('input[name="phone"]');
             const contactPersonField = document.querySelector('input[name="contactperson"]');
-            
+
             if (nameField) nameField.value = user.name;
             if (phoneFields[0]) phoneFields[0].value = user.phone.replace('+91', '');
             if (contactPersonField) contactPersonField.value = user.name;
             if (phoneFields[1]) phoneFields[1].value = user.phone.replace('+91', '');
         }
-        
+
         function signOut() {
             localStorage.removeItem('bharatDarshanUser');
             location.reload();
         }
         window.signOut = signOut;
-        
+
         // Dropdown toggle
         document.getElementById('userDropdown')?.addEventListener('click', () => {
             document.getElementById('dropdownMenu')?.classList.toggle('hidden');
         });
-        
+
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
             if (!document.getElementById('userInfo')?.contains(e.target)) {
@@ -654,7 +684,7 @@
             const mobileMenu = document.getElementById('mobileMenu');
             mobileMenu?.classList.toggle('hidden');
         });
-        
+
         // Hide mobile menu when clicking outside
         document.addEventListener('click', (e) => {
             const mobileMenu = document.getElementById('mobileMenu');
@@ -663,9 +693,9 @@
                 mobileMenu?.classList.add('hidden');
             }
         });
-        
 
-        
+
+
         // Hide mobile menu when clicking on nav links
         document.querySelectorAll('#mobileMenu a').forEach(link => {
             link.addEventListener('click', () => {
