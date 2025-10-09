@@ -2,6 +2,39 @@ document.addEventListener('DOMContentLoaded', () => {
     let allTrips = [];
     const baseUrl = "https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec";
     
+    // PWA Install functionality
+    let deferredPrompt;
+    const installBtnHero = document.getElementById('installBtnHero');
+    const installBtnHeader = document.getElementById('installBtnHeader');
+    
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtnHero?.classList.remove('hidden');
+        installBtnHeader?.classList.remove('hidden');
+    });
+    
+    function installApp() {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    installBtnHero?.classList.add('hidden');
+                    installBtnHeader?.classList.add('hidden');
+                }
+                deferredPrompt = null;
+            });
+        }
+    }
+    
+    installBtnHero?.addEventListener('click', installApp);
+    installBtnHeader?.addEventListener('click', installApp);
+    
+    window.addEventListener('appinstalled', () => {
+        installBtnHero?.classList.add('hidden');
+        installBtnHeader?.classList.add('hidden');
+    });
+    
     fetch(baseUrl)
         .then(res => res.json())
         .then(trips => {
