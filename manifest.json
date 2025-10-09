@@ -171,6 +171,56 @@
       "type": "image/png",
       "form_factor": "narrow",
       "label": "Sign in and sign up"
+    },
+    {
+      "src": "screenshot/wide-1.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop home screen with trip categories"
+    },
+    {
+      "src": "screenshot/wide-2.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop trip booking interface"
+    },
+    {
+      "src": "screenshot/wide-3.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop home screen with trip categories"
+    },
+    {
+      "src": "screenshot/wide-4.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop explore trips with advanced filters"
+    },
+    {
+      "src": "screenshot/wide-5.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop explore trips with advanced filters"
+    },
+    {
+      "src": "screenshot/wide-6.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop dashboard and booking management"
+    }
+    ,
+    {
+      "src": "screenshot/wide-7.png",
+      "sizes": "1920x1080",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Desktop dashboard and booking management"
     }
   ]
 }
