@@ -6,14 +6,36 @@ document.addEventListener('DOMContentLoaded', () => {
     let deferredPrompt;
     const installBtn = document.getElementById('installBtn');
     
+    // Register service worker
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+    }
+    
+    // Check if device is iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
+    const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    
+    // Show install button on iOS or localhost if not already installed
+    if ((isIOS || isLocalhost) && !isInStandaloneMode) {
+        installBtn?.classList.remove('hidden');
+    }
+    
     window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn?.classList.remove('hidden');
+        
+        // Show install button on non-iOS devices
+        if (!isIOS) {
+            installBtn?.classList.remove('hidden');
+        }
     });
     
     function installApp() {
-        if (deferredPrompt) {
+        if (isIOS) {
+            // Show iOS installation instructions
+            alert('To install this app on your iPhone:\n\n1. Tap the Share button in Safari\n2. Scroll down and tap "Add to Home Screen"\n3. Tap "Add" to install');
+        } else if (deferredPrompt) {
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then((choiceResult) => {
                 if (choiceResult.outcome === 'accepted') {
