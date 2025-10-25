@@ -24,6 +24,13 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        
+        @media (max-width: 320px) {
+            * { font-size: 10px !important; }
+            nav, footer { display: none !important; }
+            .grid { grid-template-columns: 1fr !important; gap: 4px !important; }
+            button { min-height: 28px !important; }
+        }
     </style>
 </head>
 

@@ -15,6 +15,15 @@
 
 
     <script src="index.js"></script>
+    <script>
+        if (screen.width <= 320) {
+            document.addEventListener('DOMContentLoaded', () => {
+                document.querySelectorAll('button, a').forEach(el => {
+                    el.addEventListener('touchstart', () => navigator.vibrate?.(10));
+                });
+            });
+        }
+    </script>
     <style>
         body {
             font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'
@@ -23,6 +32,15 @@
         .glass {
             background: rgba(0, 0, 0, .55);
             backdrop-filter: blur(3px)
+        }
+        
+        @media (max-width: 320px) {
+            * { font-size: 10px !important; }
+            header, form, footer { padding: 6px !important; }
+            nav, #glimpses, #about, #contact { display: none !important; }
+            #home { height: 160px !important; }
+            .grid { grid-template-columns: 1fr 1fr !important; gap: 4px !important; }
+            button, a { min-height: 28px !important; }
         }
     </style>
 </head>

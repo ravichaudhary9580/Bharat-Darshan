@@ -11,13 +11,16 @@ document.addEventListener('DOMContentLoaded', () => {
         navigator.serviceWorker.register('./sw.js');
     }
     
-    // Check if device is iOS
+    // Check if device is iOS or smartwatch
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    const isSmartwatch = window.screen.width <= 320 && window.screen.height <= 320;
     const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches;
     const isLocalhost = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
     
-    // Show install button on iOS or localhost if not already installed
-    if ((isIOS || isLocalhost) && !isInStandaloneMode) {
+
+    
+    // Show install button on iOS, smartwatch, or localhost if not already installed
+    if ((isIOS || isSmartwatch || isLocalhost) && !isInStandaloneMode) {
         installBtn?.classList.remove('hidden');
     }
     
