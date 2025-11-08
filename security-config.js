@@ -1,12 +1,12 @@
 const SecurityConfig = {
     session: {
-        isValid: function(userData) {
+        isValid: function (userData) {
             if (!userData || !userData.signInTime) return false;
             const signInTime = new Date(userData.signInTime);
             const now = new Date();
             return (now - signInTime) < CONFIG.SESSION_DURATION;
         },
-        refresh: function() {
+        refresh: function () {
             const userData = this.secureStorage.getItem('bharatDarshanUser');
             if (userData) {
                 userData.lastActivity = new Date().toISOString();
@@ -16,7 +16,7 @@ const SecurityConfig = {
     },
 
     secureStorage: {
-        setItem: function(key, value) {
+        setItem: function (key, value) {
             try {
                 localStorage.setItem(key, JSON.stringify(value));
                 return true;
@@ -25,7 +25,7 @@ const SecurityConfig = {
                 return false;
             }
         },
-        getItem: function(key) {
+        getItem: function (key) {
             try {
                 const item = localStorage.getItem(key);
                 return item ? JSON.parse(item) : null;
@@ -44,18 +44,18 @@ const SecurityConfig = {
     RATE_LIMITS: CONFIG.RATE_LIMITS,
 
     rateLimiter: {
-        isAllowed: function(action, config) {
+        isAllowed: function (action, config) {
             try {
                 const key = `rateLimit_${action}`;
                 const now = Date.now();
                 const attempts = JSON.parse(localStorage.getItem(key) || '[]');
-                
+
                 const validAttempts = attempts.filter(time => now - time < config.windowMs);
-                
+
                 if (validAttempts.length >= config.maxAttempts) {
                     return false;
                 }
-                
+
                 validAttempts.push(now);
                 localStorage.setItem(key, JSON.stringify(validAttempts));
                 return true;
@@ -66,12 +66,12 @@ const SecurityConfig = {
         }
     },
 
-    sanitizeInput: function(input) {
+    sanitizeInput: function (input) {
         if (typeof input !== 'string') return '';
         return input.replace(/[<>"'&]/g, '');
     },
 
-    escapeHtml: function(text) {
+    escapeHtml: function (text) {
         const div = document.createElement('div');
         div.textContent = text;
         return div.innerHTML;
