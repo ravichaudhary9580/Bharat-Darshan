@@ -23,3 +23,21 @@ self.addEventListener('fetch', e => {
     }).catch(() => caches.match('/offline.html')))
   );
 });
+
+self.addEventListener('periodicsync', e => {
+  if (e.tag === 'update-trips') {
+    e.waitUntil(fetch('https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec')
+      .then(res => res.json())
+      .then(data => caches.open(CACHE).then(cache => cache.put('/api/trips', new Response(JSON.stringify(data))))));
+  }
+});
+
+self.addEventListener('push', e => {
+  const data = e.data ? e.data.json() : {title: 'Bharat Darshan', body: 'New trip available!'};
+  e.waitUntil(self.registration.showNotification(data.title, {body: data.body, icon: '/image/home/logo.png', badge: '/image/home/logo.png'}));
+});
+
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  e.waitUntil(clients.openWindow('/'));
+});
