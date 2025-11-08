@@ -2,11 +2,11 @@
   "name": "Bharat Darshan",
   "short_name": "Bharat Darshan",
   "description": "Discover India's heritage with curated travel experiences",
-  "start_url": "https://ravichaudhary9580.github.io/Bharat-Darshan/signin.html",
+  "start_url": "/",
   "id": "com.bharatdarshan.travel",
-  "scope": "https://ravichaudhary9580.github.io/Bharat-Darshan/",
+  "scope": "/",
   "display": "standalone",
-  "display_override": "window-controls-overlay",
+  "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#16a34a",
@@ -25,12 +25,12 @@
   ],
   "prefer_related_applications": false,
   "launch_handler": {
-    "client_mode": "focus-existing"
+    "client_mode": ["focus-existing"]
   },
   "protocol_handlers": [
     {
       "protocol": "web+bharatdarshan",
-      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/?handler=%s"
+      "url": "/?handler=%s"
     }
   ],
   "shortcuts": [
@@ -38,7 +38,7 @@
       "name": "Book Trip",
       "short_name": "Book",
       "description": "Book a new trip",
-      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/index.html#booking",
+      "url": "/index.html#booking",
       "icons": [
         {
           "src": "icon-192.png",
@@ -50,7 +50,7 @@
       "name": "Explore Trips",
       "short_name": "Explore",
       "description": "Browse available trips",
-      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/exploretrip.html",
+      "url": "/exploretrip.html",
       "icons": [
         {
           "src": "icon-192.png",
@@ -62,7 +62,7 @@
       "name": "Dashboard",
       "short_name": "Dashboard",
       "description": "View your bookings",
-      "url": "https://ravichaudhary9580.github.io/Bharat-Darshan/dashboard.html",
+      "url": "/dashboard.html",
       "icons": [
         {
           "src": "icon-192.png",
