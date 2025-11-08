@@ -121,6 +121,8 @@ window.addEventListener('resize', autoScrollStudent);
 
 
 const baseUrl = "https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec";
+const CACHE_KEY = 'bharatDarshanTrips';
+const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
 let allTrips = [];
 let filteredTrips = [];
@@ -189,7 +191,7 @@ function renderTrips(trips) {
         
         article.innerHTML = `
             <div class="relative">
-                <img class="h-40 w-full object-cover" src="${convertDriveUrl(trip.image)}" alt="${trip.title}"/>
+                <img class="h-40 w-full object-cover" loading="lazy" src="${convertDriveUrl(trip.image)}" alt="${trip.title}"/>
                 <div class="absolute top-2 right-2 flex gap-1">
                     <div class="px-2 py-1 ${trip.status === 'Booking Open' ? 'bg-green-600' : 'bg-red-600'} text-white text-xs rounded">
                         ${trip.status}
@@ -319,17 +321,69 @@ function clearAllFilters() {
 }
 
 window.clearAllFilters = clearAllFilters;
+window.clearCache = () => {
+    localStorage.removeItem(CACHE_KEY);
+    localStorage.removeItem(CACHE_KEY + '_time');
+    location.reload();
+};
 
+// Handle hash changes for category filtering
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.substring(1);
+    const categoryMap = {
+        'adventure': 'Adventure',
+        'heritage': 'Heritage',
+        'religious': 'Religious',
+        'student': 'Student'
+    };
+    if (categoryMap[hash]) {
+        document.getElementById('categoryFilter').value = categoryMap[hash];
+        applyFilters();
+    }
+});
+
+
+// Load trips with caching
+function loadTrips() {
+    const cached = localStorage.getItem(CACHE_KEY);
+    const cacheTime = localStorage.getItem(CACHE_KEY + '_time');
+    
+    if (cached && cacheTime && Date.now() - parseInt(cacheTime) < CACHE_DURATION) {
+        return Promise.resolve(JSON.parse(cached));
+    }
+    
+    return fetch(baseUrl)
+        .then(res => res.json())
+        .then(trips => {
+            localStorage.setItem(CACHE_KEY, JSON.stringify(trips));
+            localStorage.setItem(CACHE_KEY + '_time', Date.now().toString());
+            return trips;
+        });
+}
 
 // Load all trips and setup filters
 document.addEventListener('DOMContentLoaded', () => {
-    fetch(baseUrl)
-        .then(res => res.json())
+    loadTrips()
         .then(trips => {
             allTrips = trips;
             filteredTrips = trips;
             populateLocationFilter();
-            renderTrips(filteredTrips);
+            
+            // Check for hash in URL and apply category filter
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const categoryMap = {
+                    'adventure': 'Adventure',
+                    'heritage': 'Heritage',
+                    'religious': 'Religious',
+                    'student': 'Student'
+                };
+                if (categoryMap[hash]) {
+                    document.getElementById('categoryFilter').value = categoryMap[hash];
+                }
+            }
+            
+            applyFilters();
             
             // Setup event listeners
             document.getElementById('searchBox').addEventListener('input', applyFilters);
@@ -342,6 +396,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('statusFilter').addEventListener('change', applyFilters);
             document.getElementById('clearFilters').addEventListener('click', clearAllFilters);
         })
-        .catch(err => console.error('Error loading trips:', err));
+        .catch(err => {
+            console.error('Error loading trips:', err);
+            document.getElementById('loadingTrips').innerHTML = '<p class="text-red-600">Failed to load trips. Please refresh.</p>';
+        });
 });
 
