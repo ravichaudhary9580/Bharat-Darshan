@@ -37,8 +37,8 @@
             <button id="signinTab"
                 class="flex-1 py-2 px-4 rounded-md bg-white text-green-600 font-medium text-sm shadow-sm">Sign
                 In</button>
-            <button id="signupTab" class="flex-1 py-2 px-4 rounded-md text-gray-600 font-medium text-sm">Sign
-                Up</button>
+            <!-- <button id="signupTab" class="flex-1 py-2 px-4 rounded-md text-gray-600 font-medium text-sm">Sign
+                Up</button> -->
         </div>
 
         <!-- Sign In Form -->
@@ -69,7 +69,7 @@
             </button>
         </form>
         <!-- Sign Up Form -->
-        <form id="signupForm" class="space-y-6 hidden">
+        <!-- <form id="signupForm" class="space-y-6 hidden">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Name</label>
                 <input type="text" id="signupName" required
@@ -94,7 +94,7 @@
                 class="w-full bg-green-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-green-700 transition-colors">
                 Sign Up
             </button>
-        </form>
+        </form> -->
 
         <!-- Back to Home -->
         <!-- <div class="text-center mt-6">
@@ -105,13 +105,13 @@
 
         <!-- Success Message -->
         <div id="successMessage" class="hidden mt-4 p-3 bg-green-100 text-green-800 rounded-lg text-center text-sm">
-            ✓ Sign in successful! Redirecting to home...
+            ✓ Verification Successful! Signing In to your account dashboard...
         </div>
     </div>
 
     <script>
         // Single point for Apps Script URL - CHANGE THIS URL ONLY
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWWK7CD8VScQEzEEPBu-H1JVRDdqrylM7NuystcGtNxViK9OqTdXe_wCvKtxJRk-12gA/exec';
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbybjPrkOFxW0i2VOM2yC_KR1h43BIpxNmpcjLVuFlS-Z3o2TBxPp6cEhfgdbnic3izBLw/exec';
 
         // Check if already signed in
         if (localStorage.getItem('bharatDarshanUser')) {
@@ -119,26 +119,26 @@
         }
 
         // Ensure signup form is hidden on load
-        document.addEventListener('DOMContentLoaded', () => {
+        /* document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('signupForm').classList.add('hidden');
-        });
+        }); */
 
         // Tab switching
-        document.getElementById('signinTab').addEventListener('click', () => {
+        /* document.getElementById('signinTab').addEventListener('click', () => {
             document.getElementById('signinTab').className = 'flex-1 py-2 px-4 rounded-md bg-white text-green-600 font-medium text-sm shadow-sm';
             document.getElementById('signupTab').className = 'flex-1 py-2 px-4 rounded-md text-gray-600 font-medium text-sm';
             document.getElementById('signinForm').classList.remove('hidden');
             document.getElementById('signupForm').classList.add('hidden');
             document.getElementById('formSubtitle').textContent = 'Sign in to your account';
-        });
+        }); */
 
-        document.getElementById('signupTab').addEventListener('click', () => {
+        /* document.getElementById('signupTab').addEventListener('click', () => {
             document.getElementById('signupTab').className = 'flex-1 py-2 px-4 rounded-md bg-white text-green-600 font-medium text-sm shadow-sm';
             document.getElementById('signinTab').className = 'flex-1 py-2 px-4 rounded-md text-gray-600 font-medium text-sm';
             document.getElementById('signupForm').classList.remove('hidden');
             document.getElementById('signinForm').classList.add('hidden');
             document.getElementById('formSubtitle').textContent = 'Create your account';
-        });
+        }); */
 
         // Sign In
         document.getElementById('signinForm').addEventListener('submit', function (e) {
@@ -178,7 +178,7 @@
         });
 
         // Sign Up
-        document.getElementById('signupForm').addEventListener('submit', function (e) {
+        /* document.getElementById('signupForm').addEventListener('submit', function (e) {
             e.preventDefault();
 
             const name = document.getElementById('signupName').value.trim();
@@ -213,7 +213,7 @@
             document.getElementById('successMessage').textContent = '✓ Account created! Redirecting...';
             document.getElementById('successMessage').classList.remove('hidden');
             setTimeout(() => window.location.href = 'index.html', 1500);
-        });
+        }); */
     </script>
 </body>
 </html>

@@ -214,9 +214,9 @@ function renderTrips(trips) {
                 <p class="text-base font-bold text-blue-600">${trip.price}</p>
               </div>
               <div class="mt-auto space-y-1">
-                <button class="w-full bg-orange-400 text-white py-2 px-3 rounded-lg hover:bg-orange-500 transition-colors text-sm font-semibold">
+                ${trip.status === 'Booking Open' ? `<button class="w-full bg-orange-400 text-white py-2 px-3 rounded-lg hover:bg-orange-500 transition-colors text-sm font-semibold">
                     <a href="index.html?category=${encodeURIComponent(trip.category)}&title=${encodeURIComponent(trip.title)}#booking">Book Now</a>
-                </button>
+                </button>` : ''}
                 <button class="w-full border border-blue-600 text-blue-600 py-1 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm">
                     <a href="${trip.knowmore}" target="_blank">Know More</a>
                 </button>
