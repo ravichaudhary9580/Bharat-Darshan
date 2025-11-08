@@ -82,7 +82,7 @@
     },
     {
       "src": "manifest-icon-192.maskable.png",
-      "sizes": "192x192",
+      "sizes": "196x196",
       "type": "image/png",
       "purpose": "maskable"
     },
@@ -104,70 +104,70 @@
     {
       "src": "screenshot/1.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Home screen with trip categories"
     },
     {
       "src": "screenshot/2.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Trip booking form"
     },
     {
       "src": "screenshot/3.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Explore trips with filters"
     },
     {
       "src": "screenshot/4.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "User dashboard and bookings"
     },
     {
       "src": "screenshot/5.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Sign in and sign up"
     },
     {
       "src": "screenshot/6.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Home screen with trip categories"
     },
     {
       "src": "screenshot/7.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Trip booking form"
     },
     {
       "src": "screenshot/8.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Explore trips with filters"
     },
     {
       "src": "screenshot/9.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "User dashboard and bookings"
     },
     {
       "src": "screenshot/10.png",
       "sizes": "540x1170",
-      "type": "image/png",
+      "type": "image/jpeg",
       "form_factor": "narrow",
       "label": "Sign in and sign up"
     },
