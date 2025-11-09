@@ -2,10 +2,44 @@
   "name": "Bharat Darshan",
   "short_name": "Bharat Darshan",
   "description": "Discover India's heritage with curated travel experiences",
-  "start_url": "https://ravichaudhary9580.github.io/Bharat-Darshan/signin.html",
+  "start_url": "https://ravichaudhary9580.github.io/Bharat-Darshan/index.html",
   "id": "com.bharatdarshan.travel",
   "scope": "/",
   "scope_extensions": [{"origin": "https://ravichaudhary9580.github.io/"}],
+  "file_handlers": [
+    {
+      "action": "/",
+      "accept": {
+        "application/pdf": [".pdf"],
+        "image/*": [".jpg", ".jpeg", ".png"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/",
+    "method": "GET",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url"
+    }
+  },
+  "widgets": [
+    {
+      "name": "Upcoming Trips",
+      "short_name": "Trips",
+      "description": "View upcoming trips",
+      "tag": "trips",
+      "template": "trips-widget",
+      "ms_ac_template": "widget.json",
+      "data": "widget-data.json",
+      "type": "application/json",
+      "screenshots": [{"src": "screenshot/1.png", "sizes": "540x1170", "label": "Trips widget"}],
+      "icons": [{"src": "icon-192.png", "sizes": "192x192"}],
+      "auth": false,
+      "update": 3600
+    }
+  ],
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "portrait-primary",
