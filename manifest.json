@@ -5,7 +5,7 @@
   "start_url": "/",
   "id": "com.bharatdarshan.travel",
   "scope": "/",
-  "scope_extensions": [{"origin": "https://ravichaudhary9580.github.io"}],
+  "scope_extensions": [{"origin": "https://ravichaudhary9580.github.io/Bharat-Darshan/"}],
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
   "orientation": "portrait-primary",
