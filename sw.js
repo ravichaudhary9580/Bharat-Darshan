@@ -1,5 +1,5 @@
 const CACHE = 'bharat-darshan-v1';
-const assets = ['/', '/index.html', '/exploretrip.html', '/dashboard.html', '/signin.html', '/privacy-policy.html', '/offline.html', '/index.js', '/exploretrip.js', '/image/home/logo.png'];
+const assets = ['/index.html', '/exploretrip.html', '/dashboard.html', '/signin.html', '/privacy-policy.html', '/offline.html', '/index.js', '/exploretrip.js', '/image/home/logo.png', 'https://cdn.tailwindcss.com'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(CACHE).then(cache => cache.addAll(assets)));
