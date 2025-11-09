@@ -3,6 +3,6 @@
       "target": {
         "namespace": "android_app",
         "package_name": "io.github.ravichaudhary9580.twa",
-        "sha256_cert_fingerprints": ["03020FE96223FEA697724A1C974EBAEEA921CBAE74AB189BA5F22A616640F6E6"]
+        "sha256_cert_fingerprints": ["A6D17FE89225EAE6E6199DF438089789304E3EB3BF15C5B12A37349B8C7997B4"]
       }
     }]
