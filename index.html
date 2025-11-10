@@ -12,8 +12,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-
     <script src="index.js"></script>
     <script>
         if (screen.width <= 320) {
@@ -33,6 +31,19 @@
             background: rgba(0, 0, 0, .55);
             backdrop-filter: blur(3px)
         }
+
+        .hamburger { width: 24px; height: 20px; position: relative; cursor: pointer; }
+        .hamburger span { display: block; position: absolute; height: 3px; width: 100%; background: #1f2937; border-radius: 3px; opacity: 1; left: 0; transition: .25s ease-in-out; }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 8px; }
+        .hamburger span:nth-child(3) { top: 16px; }
+        .hamburger.active span:nth-child(1) { top: 8px; transform: rotate(135deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; left: -60px; }
+        .hamburger.active span:nth-child(3) { top: 8px; transform: rotate(-135deg); }
+        #mobileMenu { position: fixed; top: 0; right: -100%; width: 280px; height: 100vh; background: white; box-shadow: -4px 0 20px rgba(0,0,0,0.1); transition: right 0.3s ease-in-out; z-index: 100; overflow-y: auto; }
+        #mobileMenu.show { right: 0; }
+        #menuOverlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); opacity: 0; pointer-events: none; transition: opacity 0.3s ease-in-out; z-index: 99; }
+        #menuOverlay.show { opacity: 1; pointer-events: auto; }
         
         @media (max-width: 320px) {
             * { font-size: 10px !important; }
@@ -92,78 +103,99 @@
                 <a href="#booking" class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-xl shadow">Book
                     Now</a>
             </div>
-            <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Open menu">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="menuOverlay"></div>
+    
+    <!-- Mobile Menu Sidebar -->
+    <div id="mobileMenu" class="md:hidden">
+        <div class="flex items-center justify-between p-4 border-b">
+            <span class="text-xl font-bold text-gray-900">Menu</span>
+            <button id="closeMenu" class="p-2 hover:bg-gray-100 rounded-lg">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
             </button>
         </div>
-        <div id="mobileMenu" class="md:hidden hidden border-t">
-            <nav class="px-4 py-3 grid gap-3">
-                <a href="index.html#home" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
-                        </path>
+        <nav class="p-4 space-y-1">
+                <a href="index.html#home" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
                     </svg>
-                    Home
+                    <span class="font-medium">Home</span>
                 </a>
-                <a href="exploretrip.html" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064">
-                        </path>
+                <a href="exploretrip.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/>
                     </svg>
-                    Trips
+                    <span class="font-medium">Trips</span>
                 </a>
-                <a href="dashboard.html" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
-                        </path>
+                <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM14 5a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 16a1 1 0 011-1h4a1 1 0 011 1v3a1 1 0 01-1 1H5a1 1 0 01-1-1v-3zM14 13a1 1 0 011-1h4a1 1 0 011 1v7a1 1 0 01-1 1h-4a1 1 0 01-1-1v-7z"/>
                     </svg>
-                    Bookings
+                    <span class="font-medium">Dashboard</span>
                 </a>
-                <a href="index.html#about" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                <a href="dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                     </svg>
-                    About
+                    <span class="font-medium">My Bookings</span>
                 </a>
-                <a href="index.html#contact" class="hover:text-green-700 flex items-center justify-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
-                        </path>
+                <a href="index.html#about" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                     </svg>
-                    Contact
+                    <span class="font-medium">About</span>
                 </a>
-                <div id="authButtonsMobile" class="flex justify-center">
-                    <a href="signin.html"
-                        class="bg-green-600 hover:bg-green-700 text-white text-center px-4 py-2 rounded-xl shadow">Sign
-                        In</a>
+                <a href="index.html#contact" class="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-green-50 transition">
+                    <svg class="h-5 w-5 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <span class="font-medium">Contact</span>
+                </a>
+                
+                <div class="border-t my-2"></div>
+                
+                <div id="authButtonsMobile" class="px-4 py-2">
+                    <a href="signin.html" class="flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 text-white px-4 py-3 rounded-xl font-semibold transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"/>
+                        </svg>
+                        Sign In
+                    </a>
                 </div>
-                <div id="userInfoMobile" class="hidden space-y-2">
-                    <span id="userNameMobile" class="font-medium text-center block"></span>
-                    <a href="dashboard.html"
-                        class="bg-blue-600 hover:bg-blue-700 text-white text-center px-4 py-2 rounded-xl shadow block">Dashboard</a>
-                    <button onclick="signOut()"
-                        class="bg-red-500 hover:bg-red-600 text-white text-center px-4 py-2 rounded-xl shadow w-full">Sign
-                        Out</button>
+                <div id="userInfoMobile" class="hidden px-4 py-2 space-y-2">
+                    <div class="bg-gray-100 px-4 py-3 rounded-lg">
+                        <span id="userNameMobile" class="font-semibold text-gray-900 block"></span>
+                    </div>
+                    <button onclick="signOut()" class="w-full flex items-center justify-center gap-2 bg-red-500 hover:bg-red-600 text-white px-4 py-3 rounded-xl font-semibold transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                        </svg>
+                        Sign Out
+                    </button>
                 </div>
-                <a href="#booking"
-                    class="md:inline-flex bg-orange-500 hover:bg-orange-600 text-white text-center px-4 py-2 rounded-xl shadow">Book
-                    Now</a>
+                
+                <div class="px-4 py-2">
+                    <a href="index.html#booking" class="flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white px-4 py-3 rounded-xl font-semibold transition">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                        </svg>
+                        Book Now
+                    </a>
+                </div>
             </nav>
         </div>
-    </header>
     <!-- Hero -->
     <section id="home" class="relative h-[72vh] md:h-[82vh] flex items-center justify-center">
         <img src="image/home/hero3.png"
@@ -696,30 +728,19 @@
             }
         });
 
-        // Mobile menu toggle
-        document.getElementById('menuBtn')?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu?.classList.toggle('hidden');
-        });
 
-        // Hide mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuBtn = document.getElementById('menuBtn');
-            if (!menuBtn?.contains(e.target) && !mobileMenu?.contains(e.target)) {
-                mobileMenu?.classList.add('hidden');
-            }
-        });
-
-
-
-        // Hide mobile menu when clicking on nav links
-        document.querySelectorAll('#mobileMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('mobileMenu')?.classList.add('hidden');
-            });
-        });
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const closeMenu = document.getElementById('closeMenu');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const hamburger = document.querySelector('.hamburger');
+        function openMenu() { mobileMenu?.classList.add('show'); menuOverlay?.classList.add('show'); hamburger?.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeMenuFn() { mobileMenu?.classList.remove('show'); menuOverlay?.classList.remove('show'); hamburger?.classList.remove('active'); document.body.style.overflow = ''; }
+        menuBtn?.addEventListener('click', openMenu);
+        closeMenu?.addEventListener('click', closeMenuFn);
+        menuOverlay?.addEventListener('click', closeMenuFn);
+        document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', closeMenuFn));
     </script>
 </body>
 
