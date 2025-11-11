@@ -120,7 +120,7 @@ window.addEventListener('DOMContentLoaded', autoScrollStudent);
 window.addEventListener('resize', autoScrollStudent);
 
 
-const baseUrl = "https://script.google.com/macros/s/AKfycbzBEnTzYfb1HF0JgHzMjmUKLnHACmGpjWN_a-5W5E1Q1UvweIM97eqzmYVRLYs2LEbK/exec";
+const baseUrl = "https://script.google.com/macros/s/AKfycbwj2nlyFntNJuJukZ-a25UzZmCnWCHWNYplpzzO990_2M-pb4DmwbOIw3EiqFMhaTzP/exec";
 const CACHE_KEY = 'bharatDarshanTrips';
 const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
 
@@ -189,6 +189,10 @@ function renderTrips(trips) {
         
         const duration = calculateDuration(trip.dates);
         
+        const tripId = `trip-${trip.title.replace(/\s+/g, '-').toLowerCase()}`;
+        const likes = trip.likes || 0;
+        const isLiked = localStorage.getItem(`liked-${tripId}`) === 'true';
+        
         article.innerHTML = `
             <div class="relative">
                 <img class="h-40 w-full object-cover" loading="lazy" src="${convertDriveUrl(trip.image)}" alt="${trip.title}"/>
@@ -200,9 +204,24 @@ function renderTrips(trips) {
                         ${trip.category}
                     </div>
                 </div>
+                <button onclick="toggleLike('${tripId}')" class="absolute top-2 left-2 bg-white/90 backdrop-blur p-2 rounded-full hover:bg-white transition-all">
+                    <svg class="w-5 h-5 ${isLiked ? 'fill-red-500 text-red-500' : 'text-gray-600'}" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                </button>
             </div>
             <div class="p-3 flex-1 flex flex-col">
-              <h4 class="text-lg font-bold mb-1 text-gray-800 leading-tight">${trip.title}</h4>
+              <div class="flex items-start justify-between mb-1">
+                <h4 class="text-lg font-bold text-gray-800 leading-tight flex-1">${trip.title}</h4>
+              </div>
+              <div class="flex items-center gap-3 mb-2 text-xs text-gray-600">
+                <span class="flex items-center gap-1">
+                    <svg class="w-4 h-4 ${isLiked ? 'fill-red-500 text-red-500' : 'text-gray-400'}" viewBox="0 0 24 24">
+                        <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                    </svg>
+                    <span id="like-count-${tripId}">${likes}</span>
+                </span>
+              </div>
               <p class="text-sm text-gray-600 mb-2 flex items-center leading-tight">
                 <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"/>
@@ -219,9 +238,16 @@ function renderTrips(trips) {
                 ${trip.status === 'Booking Open' ? `<button class="w-full bg-orange-400 text-white py-2 px-3 rounded-lg hover:bg-orange-500 transition-colors text-sm font-semibold">
                     <a href="index.html?category=${encodeURIComponent(trip.category)}&title=${encodeURIComponent(trip.title)}#booking">Book Now</a>
                 </button>` : ''}
-                <button class="w-full border border-blue-600 text-blue-600 py-1 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm">
-                    <a href="${trip.knowmore}" target="_blank">Know More</a>
-                </button>
+                <div class="flex gap-1">
+                    <button class="flex-1 border border-blue-600 text-blue-600 py-1 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm">
+                        <a href="${trip.knowmore}" target="_blank">Know More</a>
+                    </button>
+                    <button onclick="shareTrip('${trip.title}', '${trip.location}', '${trip.category}')" class="border border-green-600 text-green-600 p-1 rounded-lg hover:bg-green-50 transition-colors" title="Share Trip">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
+                        </svg>
+                    </button>
+                </div>
               </div>
             </div>
         `;
@@ -360,6 +386,42 @@ function loadTrips() {
             return trips;
         });
 }
+
+// Like functionality
+function toggleLike(tripId) {
+    const isLiked = localStorage.getItem(`liked-${tripId}`) === 'true';
+    const trip = allTrips.find(t => `trip-${t.title.replace(/\s+/g, '-').toLowerCase()}` === tripId);
+    if (!trip) return;
+    
+    const formData = new FormData();
+    formData.append('formType', 'Trip Like');
+    formData.append('tripTitle', trip.title);
+    formData.append('action', isLiked ? 'unlike' : 'like');
+    
+    fetch(baseUrl, { method: 'POST', body: formData })
+        .then(() => {
+            localStorage.setItem(`liked-${tripId}`, isLiked ? 'false' : 'true');
+            trip.likes = isLiked ? Math.max(0, trip.likes - 1) : trip.likes + 1;
+            applyFilters();
+        })
+        .catch(() => applyFilters());
+}
+
+// Share functionality
+function shareTrip(title, location, category) {
+    const url = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&title=${encodeURIComponent(title)}#booking`;
+    const text = `Check out this amazing trip: ${title} to ${location}!`;
+    
+    if (navigator.share) {
+        navigator.share({ title, text, url }).catch(() => {});
+    } else {
+        const shareUrl = `https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`;
+        window.open(shareUrl, '_blank');
+    }
+}
+
+window.toggleLike = toggleLike;
+window.shareTrip = shareTrip;
 
 // Load all trips and setup filters
 document.addEventListener('DOMContentLoaded', () => {
