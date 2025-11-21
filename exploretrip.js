@@ -478,37 +478,47 @@ function shareInstagramMessage(text, url) {
 
 async function shareToOthers(title, text, url, tripId) {
     const card = document.getElementById(`card-${tripId}`);
-    if (!card) return;
+    if (!card) {
+        alert('Card not found');
+        return;
+    }
+    
+    if (typeof html2canvas === 'undefined') {
+        alert('html2canvas not loaded');
+        document.querySelector('.fixed.inset-0')?.remove();
+        return;
+    }
     
     try {
-        const canvas = await html2canvas(card, { useCORS: true, allowTaint: true, scale: 2 });
-        const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
-        const file = new File([blob], `trip-${decodeURIComponent(title).replace(/\s+/g, '-')}.png`, { type: 'image/png' });
-        
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            await navigator.share({ files: [file], title: decodeURIComponent(title), text: decodeURIComponent(text) + '\n' + decodeURIComponent(url) });
-        } else if (navigator.share) {
-            await navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url) });
-        } else {
-            const a = document.createElement('a');
-            a.download = file.name;
-            a.href = URL.createObjectURL(blob);
-            a.click();
-            navigator.clipboard.writeText(decodeURIComponent(text) + '\n' + decodeURIComponent(url));
-            alert('Image downloaded and link copied!');
-        }
-    } catch (err) {
-        console.error(err);
-        if (navigator.share) {
+        const canvas = await html2canvas(card, { useCORS: true, allowTaint: true, scale: 2, logging: false });
+        canvas.toBlob(async (blob) => {
+            const file = new File([blob], `trip.png`, { type: 'image/png' });
+            
             try {
-                await navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url) });
-            } catch {}
-        } else {
-            navigator.clipboard.writeText(decodeURIComponent(text) + '\n' + decodeURIComponent(url));
-            alert('Link copied!');
-        }
+                if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                    await navigator.share({ files: [file], text: decodeURIComponent(text) + '\n' + decodeURIComponent(url) });
+                } else if (navigator.share) {
+                    await navigator.share({ text: decodeURIComponent(text), url: decodeURIComponent(url) });
+                } else {
+                    const a = document.createElement('a');
+                    a.download = 'trip.png';
+                    a.href = URL.createObjectURL(blob);
+                    a.click();
+                    alert('Image downloaded!');
+                }
+            } catch (e) {
+                const a = document.createElement('a');
+                a.download = 'trip.png';
+                a.href = URL.createObjectURL(blob);
+                a.click();
+                alert('Image downloaded!');
+            }
+            document.querySelector('.fixed.inset-0')?.remove();
+        }, 'image/png');
+    } catch (err) {
+        alert('Error: ' + err.message);
+        document.querySelector('.fixed.inset-0')?.remove();
     }
-    document.querySelector('.fixed.inset-0')?.remove();
 }
 
 window.toggleLike = toggleLike;
