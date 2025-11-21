@@ -185,11 +185,11 @@ function renderTrips(trips) {
     
     trips.forEach(trip => {
         const article = document.createElement('article');
+        const tripId = `trip-${trip.title.replace(/\s+/g, '-').toLowerCase()}`;
+        article.id = `card-${tripId}`;
         article.className = 'bg-white rounded-xl shadow-md hover:shadow-lg overflow-hidden border border-gray-200 flex flex-col transform transition-all duration-300 hover:-translate-y-1';
         
         const duration = calculateDuration(trip.dates);
-        
-        const tripId = `trip-${trip.title.replace(/\s+/g, '-').toLowerCase()}`;
         const likes = trip.likes || 0;
         const isLiked = localStorage.getItem(`liked-${tripId}`) === 'true';
         
@@ -242,7 +242,7 @@ function renderTrips(trips) {
                     <button class="flex-1 border border-blue-600 text-blue-600 py-1 px-3 rounded-lg hover:bg-blue-50 transition-colors text-sm">
                         <a href="${trip.knowmore}" target="_blank">Know More</a>
                     </button>
-                    <button onclick="shareTrip('${trip.title}', '${trip.location}', '${trip.category}', '${convertDriveUrl(trip.image)}')" class="border border-green-600 text-green-600 p-1 rounded-lg hover:bg-green-50 transition-colors" title="Share Trip">
+                    <button onclick="shareTrip('${trip.title}', '${trip.location}', '${trip.category}', '${tripId}')" class="border border-green-600 text-green-600 p-1 rounded-lg hover:bg-green-50 transition-colors" title="Share Trip">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/>
                         </svg>
@@ -408,7 +408,7 @@ function toggleLike(tripId) {
 }
 
 // Share functionality
-async function shareTrip(title, location, category, imageUrl) {
+async function shareTrip(title, location, category, tripId) {
     const url = `${window.location.origin}${window.location.pathname}?category=${encodeURIComponent(category)}&title=${encodeURIComponent(title)}#booking`;
     const text = `Check out this amazing trip: ${title} to ${location}!`;
     
@@ -427,7 +427,7 @@ async function shareTrip(title, location, category, imageUrl) {
                     <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     Instagram
                 </button>
-                <button onclick="shareToOthers('${encodeURIComponent(title)}', '${encodeURIComponent(text)}', '${encodeURIComponent(url)}', '${imageUrl}')" class="w-full flex items-center gap-3 p-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
+                <button onclick="shareToOthers('${encodeURIComponent(title)}', '${encodeURIComponent(text)}', '${encodeURIComponent(url)}', '${tripId}')" class="w-full flex items-center gap-3 p-3 bg-gray-500 text-white rounded-lg hover:bg-gray-600">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
                     More Options
                 </button>
@@ -476,15 +476,36 @@ function shareInstagramMessage(text, url) {
     setTimeout(() => document.querySelector('.fixed.inset-0')?.remove(), 500);
 }
 
-async function shareToOthers(title, text, url, imageUrl) {
-    if (navigator.share) {
-        try {
-            const response = await fetch(imageUrl);
-            const blob = await response.blob();
-            const file = new File([blob], 'trip.jpg', { type: blob.type });
-            await navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url), files: [file] });
-        } catch {
-            navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url) }).catch(() => {});
+async function shareToOthers(title, text, url, tripId) {
+    const card = document.getElementById(`card-${tripId}`);
+    if (!card) return;
+    
+    try {
+        const canvas = await html2canvas(card, { useCORS: true, allowTaint: true, scale: 2 });
+        const blob = await new Promise(r => canvas.toBlob(r, 'image/png'));
+        const file = new File([blob], `trip-${decodeURIComponent(title).replace(/\s+/g, '-')}.png`, { type: 'image/png' });
+        
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({ files: [file], title: decodeURIComponent(title), text: decodeURIComponent(text) + '\n' + decodeURIComponent(url) });
+        } else if (navigator.share) {
+            await navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url) });
+        } else {
+            const a = document.createElement('a');
+            a.download = file.name;
+            a.href = URL.createObjectURL(blob);
+            a.click();
+            navigator.clipboard.writeText(decodeURIComponent(text) + '\n' + decodeURIComponent(url));
+            alert('Image downloaded and link copied!');
+        }
+    } catch (err) {
+        console.error(err);
+        if (navigator.share) {
+            try {
+                await navigator.share({ title: decodeURIComponent(title), text: decodeURIComponent(text), url: decodeURIComponent(url) });
+            } catch {}
+        } else {
+            navigator.clipboard.writeText(decodeURIComponent(text) + '\n' + decodeURIComponent(url));
+            alert('Link copied!');
         }
     }
     document.querySelector('.fixed.inset-0')?.remove();
