@@ -1,8 +1,14 @@
-[{
-      "relation": ["delegate_permission/common.handle_all_urls"],
-      "target": {
-        "namespace": "android_app",
-        "package_name": "com.bharatdarshan.travel",
-        "sha256_cert_fingerprints": ["A6D17FE89225EAE6E6199DF438089789304E3EB3BF15C5B12A37349B8C7997B4"]
-      }
-    }]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.bharatdarshan.travel",
+      "sha256_cert_fingerprints": [
+        "67:A3:40:C4:EA:1D:CA:2D:72:E3:ED:CF:52:C9:F2:4C:89:A3:BE:AB:67:DA:E1:BC:E3:29:E6:B9:DD:B5:25:76"
+      ]
+    }
+  }
+]
