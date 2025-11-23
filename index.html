@@ -198,12 +198,10 @@
         </div>
     <!-- Hero -->
     <section id="home" class="relative h-[72vh] md:h-[82vh] flex items-center justify-center">
-        <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
-    <source src="video/hero.mp4" type="video/mp4">
-    <img src="image/home/hero3.png" 
-        alt="Group of travelers walking along a mountain trail in India, surrounded by lush green hills and misty peaks. The atmosphere is adventurous and uplifting."
-        class="absolute inset-0 w-full h-full object-cover" />
-</video>        <div class="relative glass rounded-2xl p-6 md:p-10 text-white text-center max-w-3xl mx-auto">
+        <video autoplay muted loop playsinline class="hidden md:block absolute inset-0 w-full h-full object-cover">
+            <source src="video/hero.mp4" type="video/mp4">
+        </video>
+        <img src="image/home/hero3.png" alt="Hero" class="md:hidden absolute inset-0 w-full h-full object-cover" />        <div class="relative glass rounded-2xl p-6 md:p-10 text-white text-center max-w-3xl mx-auto">
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Discover India, Your Way</h1>
             <p class="text-lg md:text-xl opacity-95 mb-6">Adventure • Heritage • Religious • Student Trips</p>
             <div class="text-center mt-6">
