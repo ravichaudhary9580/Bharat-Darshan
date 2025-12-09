@@ -68,7 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const categorySelect = document.getElementById('tripcategory');
         const titleSelect = document.getElementById('triptitle');
         
-        const categories = [...new Set(allTrips.map(trip => trip.category))];
+        const openTrips = allTrips.filter(trip => trip.status === 'Booking Open');
+        const categories = [...new Set(openTrips.map(trip => trip.category))];
         categorySelect.innerHTML = '<option value="">Select Category</option>';
         categories.forEach(cat => {
             const option = document.createElement('option');
@@ -78,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         
         titleSelect.innerHTML = '<option value="">Select Trip</option>';
-        allTrips.forEach(trip => {
+        openTrips.forEach(trip => {
             const option = document.createElement('option');
             option.value = trip.title;
             option.textContent = trip.title;
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
         titleSelect.innerHTML = '<option value="">Select Trip</option>';
         
         if (selectedCategory) {
-            const filteredTrips = allTrips.filter(trip => trip.category === selectedCategory);
+            const filteredTrips = allTrips.filter(trip => trip.category === selectedCategory && trip.status === 'Booking Open');
             filteredTrips.forEach(trip => {
                 const option = document.createElement('option');
                 option.value = trip.title;
