@@ -304,26 +304,26 @@
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Full Name
                             <input required name="name" type="text" autocomplete="name"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Your name" />
                         </label>
                         <label class="block text-sm">Phone
                             <input required name="phone" type="tel" pattern="[0-9]{10}" autocomplete="tel"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="10-digit number" />
                         </label>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Trip Category
                             <select required name="category"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 id="tripcategory">
                                 <option value="">Loading...</option>
                             </select>
                         </label>
                         <label class="block text-sm">Destination/Trip Title
                             <select required name="triptitle"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 id="triptitle">
                                 <option value="">Select Category First</option>
                             </select>
@@ -333,12 +333,12 @@
 
                         <label class="block text-sm">Travellers
                             <input required name="travellers" type="number" min="1"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 value="1" />
                         </label>
                         <label class="block text-sm">Notes
                             <textarea name="notes" rows="1"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Any preferences or special requests"></textarea>
                         </label>
                     </div>
@@ -359,24 +359,24 @@
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Organization Name
                             <input required name="groupname" type="text" autocomplete="organization"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="School/Company name" />
                         </label>
                         <label class="block text-sm">Contact Person
                             <input required name="contactperson" type="text" autocomplete="name"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Contact person name" />
                         </label>
                     </div>
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Phone
                             <input required name="phone" type="tel" pattern="[0-9]{10}" autocomplete="tel"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="10-digit number" />
                         </label>
                         <label class="block text-sm">Trip Category
                             <select required name="category"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600">
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600">
                                 <option value="Adventure">Adventure</option>
                                 <option value="Heritage">Heritage</option>
                                 <option value="Religious">Religious</option>
@@ -387,12 +387,12 @@
                     <div class="grid sm:grid-cols-2 gap-4">
                         <label class="block text-sm">Group Size
                             <input required name="travellers" type="number" min="10"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Minimum 10 people" />
                         </label>
                         <label class="block text-sm">Special Requirements
                             <textarea name="notes" rows="2"
-                                class="mt-1 w-full rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
+                                class="mt-1 w-full p-1 rounded border-gray-300 focus:ring-green-600 focus:border-green-600"
                                 placeholder="Accommodation preferences, dietary requirements, etc."></textarea>
                         </label>
                     </div>
@@ -596,6 +596,14 @@
             </div>
         </div>
     </section>
+
+    <!-- Fixed Reels Button
+    <a href="https://www.youtube.com/@BharatDarshan-d7k"
+        class="fixed bottom-24 right-4 z-50 w-14 h-14 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform">
+        <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12.823 1l2.974 5.002h-5.58l-2.65-4.971c.206-.013.419-.022.642-.027L8.55 1zm2.327 0h.298c3.06 0 4.468.754 5.64 1.887a6.007 6.007 0 011.596 2.82l.07.295h-4.629L15.15 1zm-9.667.377L7.95 6.002H1.244a6.01 6.01 0 013.942-4.53zm9.735 12.834l-4.545-2.624a.909.909 0 00-1.356.668l-.008.12v5.248a.91.91 0 001.255.84l.109-.053 4.545-2.624a.909.909 0 00.1-1.507l-.1-.068-4.545-2.624zm-14.2-6.209h21.964l.015.36.003.189v6.899c0 3.061-.755 4.469-1.888 5.64-1.151 1.114-2.5 1.856-5.33 1.909l-.334.003H8.551c-3.06 0-4.467-.755-5.64-1.889-1.114-1.15-1.854-2.498-1.908-5.33L1 15.45V8.551l.003-.189z"/>
+        </svg>
+    </a> -->
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-200">
