@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
    <script src="exploretrip.js"></script>
    <style>
+        .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .skeleton-text { height: 1rem; border-radius: 0.25rem; margin-bottom: 0.5rem; }
         body {
             font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
             padding-top: 72px;
@@ -163,9 +166,15 @@
         <div class="bg-white rounded-2xl shadow p-6 mb-8">
             <h2 class="text-xl font-bold mb-4">My Bookings</h2>
             <div id="bookingsList" class="space-y-4">
-                <div class="text-center py-8 text-gray-500">
-                    <p>No bookings yet</p>
-                    <a href="index.html#booking" class="text-green-600 hover:text-green-700 mt-2 inline-block">Make your first booking</a>
+                <div class="bg-white rounded-lg shadow-sm border p-4">
+                    <div class="skeleton skeleton-text" style="width:60%;height:1.5rem"></div>
+                    <div class="skeleton skeleton-text" style="width:40%"></div>
+                    <div class="skeleton skeleton-text" style="width:50%"></div>
+                </div>
+                <div class="bg-white rounded-lg shadow-sm border p-4">
+                    <div class="skeleton skeleton-text" style="width:55%;height:1.5rem"></div>
+                    <div class="skeleton skeleton-text" style="width:45%"></div>
+                    <div class="skeleton skeleton-text" style="width:48%"></div>
                 </div>
             </div>
         </div>
@@ -469,8 +478,6 @@
         function loadBookings() {
             const userData = JSON.parse(localStorage.getItem('bharatDarshanUser'));
             const baseUrl = 'https://script.google.com/macros/s/AKfycbybjPrkOFxW0i2VOM2yC_KR1h43BIpxNmpcjLVuFlS-Z3o2TBxPp6cEhfgdbnic3izBLw/exec';
-            
-            document.getElementById('bookingsList').innerHTML = '<div class="text-center py-8"><div class="animate-spin h-8 w-8 border-4 border-green-600 border-t-transparent rounded-full mx-auto"></div><p class="mt-2 text-gray-500">Loading bookings...</p></div>';
             
             fetch(`${baseUrl}?phone=${encodeURIComponent(userData.phone)}`)
                 .then(res => res.json())

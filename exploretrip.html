@@ -13,6 +13,13 @@
     <script src="exploretrip.js"></script>
 
     <style>
+        .skeleton { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        .skeleton-card { border-radius: 1rem; overflow: hidden; }
+        .skeleton-img { height: 12rem; }
+        .skeleton-text { height: 1rem; border-radius: 0.25rem; margin-bottom: 0.5rem; }
+        .skeleton-text.w-3-4 { width: 75%; }
+        .skeleton-text.w-1-2 { width: 50%; }
         body {
             font-family: 'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
         }
@@ -240,9 +247,39 @@
                 <span id="resultsCount" class="text-sm text-gray-600"></span>
             </div>
             <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                <div id="loadingTrips" class="col-span-full text-center py-12">
-                    <div class="animate-spin h-8 w-8 border-4 border-green-600 border-t-transparent rounded-full mx-auto mb-4"></div>
-                    <p class="text-gray-600">Loading trips...</p>
+                <div id="loadingTrips" class="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                    <div class="skeleton-card bg-white shadow">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="p-4">
+                            <div class="skeleton skeleton-text w-3-4"></div>
+                            <div class="skeleton skeleton-text w-1-2"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card bg-white shadow">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="p-4">
+                            <div class="skeleton skeleton-text w-3-4"></div>
+                            <div class="skeleton skeleton-text w-1-2"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card bg-white shadow">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="p-4">
+                            <div class="skeleton skeleton-text w-3-4"></div>
+                            <div class="skeleton skeleton-text w-1-2"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
+                    <div class="skeleton-card bg-white shadow">
+                        <div class="skeleton skeleton-img"></div>
+                        <div class="p-4">
+                            <div class="skeleton skeleton-text w-3-4"></div>
+                            <div class="skeleton skeleton-text w-1-2"></div>
+                            <div class="skeleton skeleton-text"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="noResults" class="hidden text-center py-12">
